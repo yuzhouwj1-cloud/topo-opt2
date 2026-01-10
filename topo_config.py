@@ -1,0 +1,18 @@
+"""Global configuration for topology optimization."""
+
+N = 32
+A_GROUP_SIZE = 20
+B_GROUP_SIZE = 12
+PORTS_PER_CHIP = 9
+DEFAULT_RANDOM_SEED = 42
+
+TRAFFIC_VOLUME = 1.0
+
+ROUTING_STRATEGY = "shortest_multipath"
+MAX_SHORTEST_PATHS = 8
+
+SEARCH_STRATEGY = "simulated_annealing"
+REWIRE_EDGES = 3
+INITIAL_TEMPERATURE = 4.0
+COOLING_RATE = 0.97
+DISCONNECTED_PENALTY = 1000.0
