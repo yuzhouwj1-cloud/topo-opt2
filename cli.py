@@ -1,0 +1,120 @@
+"""Command-line interface for topology optimization."""
+
+import argparse
+import json
+
+from baseline import equivalent_switch_ports, switch_communication_time
+from export_topology import export_topology
+from optimize import optimize_topology, save_optimization
+from simulate import simulate
+from topo_config import DEFAULT_RANDOM_SEED
+from topology import build_initial_topology
+from traffic import generate_full_mesh_traffic, serialize_traffic
+
+
+def handle_generate_traffic(args: argparse.Namespace) -> None:
+    traffic = generate_full_mesh_traffic()
+    payload = serialize_traffic(traffic)
+    with open(args.output, "w", encoding="utf-8") as handle:
+        json.dump(payload, handle, indent=2)
+
+
+def handle_simulate(args: argparse.Namespace) -> None:
+    traffic = generate_full_mesh_traffic()
+    topology = build_initial_topology(seed=args.seed)
+    result = simulate(topology, traffic)
+    print(result)
+
+
+def handle_optimize(args: argparse.Namespace) -> None:
+    result = optimize_topology(iterations=args.iterations, seed=args.seed)
+    save_optimization(result, args.output)
+    best_time = result.best_result.communication_time
+    ports_needed = equivalent_switch_ports(best_time)
+    switch_time = switch_communication_time(ports_needed)
+    payload = {
+        "best_result": {
+            "communication_time": result.best_result.communication_time,
+            "max_edge_load": result.best_result.max_edge_load,
+            "disconnected_flows": result.best_result.disconnected_flows,
+        },
+        "switch_baseline": {
+            "ports_per_chip": ports_needed,
+            "communication_time": switch_time,
+        },
+    }
+    print(json.dumps(payload, indent=2))
+
+
+def handle_export(args: argparse.Namespace) -> None:
+    topology = build_initial_topology(seed=args.seed)
+    export_topology(topology, args.output)
+
+
+def handle_visualize(args: argparse.Namespace) -> None:
+    from visualize_topology import visualize_topology
+
+    topology = build_initial_topology(seed=args.seed)
+    visualize_topology(topology, path=args.output)
+
+
+def handle_compare_switch(args: argparse.Namespace) -> None:
+    result = optimize_topology(iterations=args.iterations, seed=args.seed)
+    best_time = result.best_result.communication_time
+    ports_needed = equivalent_switch_ports(best_time)
+    switch_time = switch_communication_time(ports_needed)
+    payload = {
+        "best_time": best_time,
+        "ports_needed": ports_needed,
+        "switch_time": switch_time,
+    }
+    print(json.dumps(payload, indent=2))
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description="Topology optimization toolkit")
+    subparsers = parser.add_subparsers(dest="command", required=True)
+
+    traffic_parser = subparsers.add_parser("generate-traffic", help="Generate traffic file")
+    traffic_parser.add_argument("--output", default="traffic.json")
+    traffic_parser.set_defaults(func=handle_generate_traffic)
+
+    simulate_parser = subparsers.add_parser("simulate", help="Simulate initial topology")
+    simulate_parser.add_argument("--seed", type=int, default=DEFAULT_RANDOM_SEED)
+    simulate_parser.set_defaults(func=handle_simulate)
+
+    optimize_parser = subparsers.add_parser("optimize", help="Run optimization")
+    optimize_parser.add_argument("--iterations", type=int, default=200)
+    optimize_parser.add_argument("--seed", type=int, default=DEFAULT_RANDOM_SEED)
+    optimize_parser.add_argument("--output", default="optimization_result.json")
+    optimize_parser.set_defaults(func=handle_optimize)
+
+    export_parser = subparsers.add_parser("export", help="Export initial topology")
+    export_parser.add_argument("--seed", type=int, default=DEFAULT_RANDOM_SEED)
+    export_parser.add_argument("--output", default="topology.json")
+    export_parser.set_defaults(func=handle_export)
+
+    visualize_parser = subparsers.add_parser("visualize", help="Visualize topology")
+    visualize_parser.add_argument("--seed", type=int, default=DEFAULT_RANDOM_SEED)
+    visualize_parser.add_argument("--output", default=None)
+    visualize_parser.set_defaults(func=handle_visualize)
+
+    compare_parser = subparsers.add_parser(
+        "compare-switch",
+        help="Compare optimized topology with switch baseline",
+    )
+    compare_parser.add_argument("--iterations", type=int, default=200)
+    compare_parser.add_argument("--seed", type=int, default=DEFAULT_RANDOM_SEED)
+    compare_parser.set_defaults(func=handle_compare_switch)
+
+    return parser
+
+
+def main() -> None:
+    parser = build_parser()
+    args = parser.parse_args()
+    args.func(args)
+
+
+if __name__ == "__main__":
+    main()
