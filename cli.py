@@ -4,6 +4,7 @@ import argparse
 import json
 
 from baseline import equivalent_switch_ports, switch_communication_time
+from export_drawio_svg import export_drawio_svg
 from export_topology import export_topology
 from optimize import optimize_topology, save_optimization
 from simulate import simulate
@@ -11,6 +12,7 @@ from topo_config import DEFAULT_RANDOM_SEED, N, PORTS_PER_CHIP
 from topology import build_initial_topology
 from traffic import generate_full_mesh_traffic, serialize_traffic, traffic_matrix
 from visualize_history import plot_history
+from visualize_topology import visualize_topology
 
 
 def compute_port_utilization(
@@ -50,10 +52,17 @@ def handle_optimize(args: argparse.Namespace) -> None:
         resume_path=args.resume_path,
     )
     save_optimization(result, args.output)
+    drawio_path, svg_path = export_drawio_svg(
+        result.best_topology,
+        args.drawio_output,
+        args.svg_output,
+    )
     best_time = result.best_result.communication_time
     ports_needed = equivalent_switch_ports(best_time)
     switch_time = switch_communication_time(ports_needed)
     history_plot = plot_history(result.history, args.history_plot)
+    topology_plot = visualize_topology(result.best_topology, path=args.topology_plot)
+    history_times = [item.communication_time for item in result.history]
     utilization = compute_port_utilization(
         result.best_result.edge_loads,
         best_time,
@@ -73,6 +82,10 @@ def handle_optimize(args: argparse.Namespace) -> None:
         "traffic_matrix": traffic_matrix(),
         "port_utilization": utilization,
         "history_plot": history_plot,
+        "history_times": history_times,
+        "topology_plot": topology_plot,
+        "drawio_path": drawio_path,
+        "svg_path": svg_path,
     }
     print(json.dumps(payload, indent=2))
 
@@ -124,9 +137,24 @@ def build_parser() -> argparse.ArgumentParser:
         help="Path to a JSON file containing a saved topology edges list.",
     )
     optimize_parser.add_argument(
+        "--topology-plot",
+        default="artifacts/topology.png",
+        help="Path to save a topology visualization (requires matplotlib/networkx).",
+    )
+    optimize_parser.add_argument(
         "--history-plot",
         default="artifacts/optimization_history.png",
         help="Path to save iteration vs communication time plot.",
+    )
+    optimize_parser.add_argument(
+        "--drawio-output",
+        default="artifacts/topology.drawio",
+        help="Path to save draw.io diagram output.",
+    )
+    optimize_parser.add_argument(
+        "--svg-output",
+        default="artifacts/topology.svg",
+        help="Path to save SVG diagram output.",
     )
     optimize_parser.set_defaults(func=handle_optimize)
 
