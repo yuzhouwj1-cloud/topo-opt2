@@ -52,6 +52,15 @@ b=12
 3. **导出/可视化逻辑尽量放在单独文件**
    - 如 `export_topology.py`, `visualize_topology.py`，避免污染核心搜索逻辑。
 
+4. **运行与汇报约定（经验沉淀）**
+   - 每次修改后都运行 `python cli.py optimize --iterations <n> --seed 42 --output optimization_result.json` 并与交换机基线对比。
+   - Summary 必须包含：
+     - **优化结果**：通信时间与 switch baseline 对比。
+     - **Topology (edge list)**：`[[1,17],[1,16],...]` 格式。
+     - **通信关系矩阵**：按矩阵输出，行=源芯片，列=目的芯片，1 表示有通信，0 表示无通信。
+     - **端口利用率**：按每个芯片输出 (真实传递数据量 ÷ 端口总通信能力) 以评估优化潜力。
+   - 版本 1 的结果表现最好，后续寻优可基于此继续改进。
+
 ---
 
 

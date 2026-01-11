@@ -16,6 +16,7 @@ class SimulationResult:
     communication_time: float
     max_edge_load: float
     disconnected_flows: int
+    edge_loads: Dict[Edge, float]
 
 
 Edge = Tuple[int, int]
@@ -215,4 +216,5 @@ def simulate(topology: Topology, traffic: Iterable[TrafficDemand]) -> Simulation
         communication_time=communication_time,
         max_edge_load=max_edge_load,
         disconnected_flows=disconnected,
+        edge_loads=edge_loads,
     )

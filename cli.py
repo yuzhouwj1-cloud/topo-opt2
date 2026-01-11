@@ -7,9 +7,25 @@ from baseline import equivalent_switch_ports, switch_communication_time
 from export_topology import export_topology
 from optimize import optimize_topology, save_optimization
 from simulate import simulate
-from topo_config import DEFAULT_RANDOM_SEED
+from topo_config import DEFAULT_RANDOM_SEED, N, PORTS_PER_CHIP
 from topology import build_initial_topology
-from traffic import generate_full_mesh_traffic, serialize_traffic
+from traffic import generate_full_mesh_traffic, serialize_traffic, traffic_matrix
+
+
+def compute_port_utilization(
+    edge_loads: dict[tuple[int, int], float],
+    communication_time: float,
+    node_count: int,
+    ports_per_chip: int,
+) -> list[float]:
+    totals = [0.0 for _ in range(node_count)]
+    for (node_a, node_b), load in edge_loads.items():
+        totals[node_a] += load
+        totals[node_b] += load
+    capacity = ports_per_chip * communication_time
+    if capacity <= 0:
+        return [0.0 for _ in range(node_count)]
+    return [total / capacity for total in totals]
 
 
 def handle_generate_traffic(args: argparse.Namespace) -> None:
@@ -32,6 +48,12 @@ def handle_optimize(args: argparse.Namespace) -> None:
     best_time = result.best_result.communication_time
     ports_needed = equivalent_switch_ports(best_time)
     switch_time = switch_communication_time(ports_needed)
+    utilization = compute_port_utilization(
+        result.best_result.edge_loads,
+        best_time,
+        N,
+        PORTS_PER_CHIP,
+    )
     payload = {
         "best_result": {
             "communication_time": result.best_result.communication_time,
@@ -42,6 +64,8 @@ def handle_optimize(args: argparse.Namespace) -> None:
             "ports_per_chip": ports_needed,
             "communication_time": switch_time,
         },
+        "traffic_matrix": traffic_matrix(),
+        "port_utilization": utilization,
     }
     print(json.dumps(payload, indent=2))
 
