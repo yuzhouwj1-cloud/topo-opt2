@@ -67,13 +67,35 @@ def build_initial_topology(
         nodes = list(range(a_size + b_size))
         slots = [node for node in nodes for _ in range(ports_per_chip)]
         rng.shuffle(slots)
-        while len(slots) >= 2:
+        max_attempts = len(slots) * 4
+        attempts = 0
+        while len(slots) >= 2 and attempts < max_attempts:
             node_a = slots.pop()
             node_b = slots.pop()
             if node_a == node_b:
+                slots.extend([node_a, node_b])
+                attempts += 1
                 continue
             if node_b in topology.neighbors(node_a):
+                slots.extend([node_a, node_b])
+                attempts += 1
                 continue
+            topology.add_edge(node_a, node_b)
+        fill_attempts = len(nodes) * ports_per_chip * 10
+        while fill_attempts > 0:
+            available = [node for node in nodes if topology.degree(node) < ports_per_chip]
+            if len(available) < 2:
+                break
+            node_a = rng.choice(available)
+            candidates = [
+                node
+                for node in available
+                if node != node_a and node not in topology.neighbors(node_a)
+            ]
+            if not candidates:
+                fill_attempts -= 1
+                continue
+            node_b = rng.choice(candidates)
             topology.add_edge(node_a, node_b)
         return topology
 
@@ -86,10 +108,19 @@ def build_initial_topology(
     rng.shuffle(source_slots)
     rng.shuffle(dest_slots)
 
-    pairs = zip(source_slots, dest_slots, strict=False)
-    for src, dst in pairs:
-        if dst in topology.neighbors(src):
+    max_attempts = len(source_slots) * 4
+    attempts = 0
+    while source_slots and dest_slots and attempts < max_attempts:
+        src = source_slots.pop()
+        dst_index = next(
+            (idx for idx, dst in enumerate(dest_slots) if dst not in topology.neighbors(src)),
+            None,
+        )
+        if dst_index is None:
+            source_slots.insert(0, src)
+            attempts += 1
             continue
+        dst = dest_slots.pop(dst_index)
         topology.add_edge(src, dst)
 
     return topology

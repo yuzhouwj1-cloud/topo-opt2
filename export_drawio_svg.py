@@ -15,7 +15,10 @@
 """
 
 import xml.etree.ElementTree as ET
-from typing import List, Tuple, Dict, Iterable
+from pathlib import Path
+from typing import Dict, Iterable, List, Tuple
+
+from topology import Topology
 
 def compute_degrees(edges: Iterable[Tuple[int, int]]) -> Dict[int, int]:
     """计算无向图中每个节点的度数。"""
@@ -285,6 +288,24 @@ def generate_graph_files(edges: List[Tuple[int, int]],
     print(f"[+] Generating SVG file: {svg_file}")
     generate_svg(edges, svg_file)
     print("[✓] Done.")
+
+
+def export_drawio_svg(
+    topology: Topology | Iterable[Tuple[int, int]],
+    drawio_path: str,
+    svg_path: str,
+) -> tuple[str, str]:
+    """Export draw.io and SVG diagrams for a topology or edge list."""
+    edges = topology.edges() if isinstance(topology, Topology) else list(topology)
+    drawio_parent = Path(drawio_path).parent
+    svg_parent = Path(svg_path).parent
+    if str(drawio_parent) and not drawio_parent.exists():
+        drawio_parent.mkdir(parents=True, exist_ok=True)
+    if str(svg_parent) and not svg_parent.exists():
+        svg_parent.mkdir(parents=True, exist_ok=True)
+    generate_drawio(edges, drawio_path)
+    generate_svg(edges, svg_path)
+    return drawio_path, svg_path
 
 
 if __name__ == "__main__":
