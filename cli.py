@@ -10,6 +10,7 @@ from simulate import simulate
 from topo_config import DEFAULT_RANDOM_SEED, N, PORTS_PER_CHIP
 from topology import build_initial_topology
 from traffic import generate_full_mesh_traffic, serialize_traffic, traffic_matrix
+from visualize_history import plot_history
 
 
 def compute_port_utilization(
@@ -48,6 +49,7 @@ def handle_optimize(args: argparse.Namespace) -> None:
     best_time = result.best_result.communication_time
     ports_needed = equivalent_switch_ports(best_time)
     switch_time = switch_communication_time(ports_needed)
+    history_plot = plot_history(result.history, args.history_plot)
     utilization = compute_port_utilization(
         result.best_result.edge_loads,
         best_time,
@@ -66,6 +68,7 @@ def handle_optimize(args: argparse.Namespace) -> None:
         },
         "traffic_matrix": traffic_matrix(),
         "port_utilization": utilization,
+        "history_plot": history_plot,
     }
     print(json.dumps(payload, indent=2))
 
@@ -111,6 +114,11 @@ def build_parser() -> argparse.ArgumentParser:
     optimize_parser.add_argument("--iterations", type=int, default=200)
     optimize_parser.add_argument("--seed", type=int, default=DEFAULT_RANDOM_SEED)
     optimize_parser.add_argument("--output", default="optimization_result.json")
+    optimize_parser.add_argument(
+        "--history-plot",
+        default="artifacts/optimization_history.png",
+        help="Path to save iteration vs communication time plot.",
+    )
     optimize_parser.set_defaults(func=handle_optimize)
 
     export_parser = subparsers.add_parser("export", help="Export initial topology")

@@ -99,6 +99,15 @@ def available_nodes(topology: Topology, nodes: Iterable[int], limit: int) -> Lis
     return [node for node in nodes if topology.degree(node) < limit]
 
 
+def topology_from_edges(edges: Iterable[Edge], node_count: int) -> Topology:
+    topology = Topology()
+    for node in range(node_count):
+        topology.adjacency.setdefault(node, set())
+    for node_a, node_b in edges:
+        topology.add_edge(node_a, node_b)
+    return topology
+
+
 def random_rewire(
     topology: Topology,
     a_size: int = A_GROUP_SIZE,

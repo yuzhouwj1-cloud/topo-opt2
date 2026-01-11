@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 import json
+import os
 import random
 from typing import List
 
@@ -12,13 +13,23 @@ from topo_config import (
     COOLING_RATE,
     DEFAULT_RANDOM_SEED,
     DISCONNECTED_PENALTY,
+    EARLY_STOP_PATIENCE,
     INITIAL_TEMPERATURE,
+    MIN_ITERATIONS,
+    N,
     REWIRE_EDGES,
+    RESUME_STATE_PATH,
     SEARCH_STRATEGY,
     STAGNATION_LIMIT,
     SWAP_EDGES,
 )
-from topology import Topology, build_initial_topology, random_rewire, random_swap_edges
+from topology import (
+    Topology,
+    build_initial_topology,
+    random_rewire,
+    random_swap_edges,
+    topology_from_edges,
+)
 from traffic import TrafficDemand, generate_full_mesh_traffic
 
 
@@ -32,11 +43,20 @@ class OptimizationResult:
 def optimize_topology(
     iterations: int = 200,
     seed: int = DEFAULT_RANDOM_SEED,
+    resume_path: str | None = RESUME_STATE_PATH,
 ) -> OptimizationResult:
     rng = random.Random(seed)
     traffic = generate_full_mesh_traffic()
     current_topology = build_initial_topology(seed=seed)
     current_result = simulate(current_topology, traffic)
+
+    if resume_path and os.path.exists(resume_path):
+        with open(resume_path, "r", encoding="utf-8") as handle:
+            payload = json.load(handle)
+        edges = payload.get("edges", [])
+        if edges:
+            current_topology = topology_from_edges(edges, N)
+            current_result = simulate(current_topology, traffic)
 
     best_topology = current_topology
     best_result = current_result
@@ -50,8 +70,11 @@ def optimize_topology(
     current_score = score(current_result)
     best_score = current_score
     stagnation = 0
+    no_improve = 0
 
-    for _ in range(iterations):
+    min_iterations = max(MIN_ITERATIONS, 1)
+
+    for step in range(iterations):
         candidate_topology = Topology(
             adjacency={k: set(v) for k, v in current_topology.adjacency.items()}
         )
@@ -74,8 +97,10 @@ def optimize_topology(
             best_result = candidate_result
             best_score = candidate_score
             stagnation = 0
+            no_improve = 0
         else:
             stagnation += 1
+            no_improve += 1
 
         if SEARCH_STRATEGY == "simulated_annealing":
             delta = candidate_score - current_score
@@ -97,6 +122,10 @@ def optimize_topology(
             current_score = score(current_result)
             temperature = INITIAL_TEMPERATURE
             stagnation = 0
+            no_improve = 0
+
+        if step + 1 >= min_iterations and no_improve >= EARLY_STOP_PATIENCE:
+            break
 
     return OptimizationResult(best_topology, best_result, history)
 
