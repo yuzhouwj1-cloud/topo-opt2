@@ -8,7 +8,15 @@ from export_drawio_svg import export_drawio_svg
 from export_topology import export_topology
 from optimize import optimize_topology, save_optimization
 from simulate import simulate
-from topo_config import DEFAULT_RANDOM_SEED, N, PORTS_PER_CHIP
+from topo_config import (
+    DEFAULT_RANDOM_SEED,
+    N,
+    PORTS_PER_CHIP,
+    ROUTING_STRATEGY,
+    MAX_SHORTEST_PATHS,
+    EXTRA_HOPS,
+    ROUTING_ITERATIONS,
+)
 from topology import build_initial_topology
 from traffic import generate_full_mesh_traffic, serialize_traffic, traffic_matrix
 from visualize_history import plot_history
@@ -29,6 +37,28 @@ def compute_port_utilization(
     if capacity <= 0:
         return [0.0 for _ in range(node_count)]
     return [total / capacity for total in totals]
+
+
+def compute_degrees(edges: list[tuple[int, int]], node_count: int) -> list[int]:
+    degrees = [0 for _ in range(node_count)]
+    for node_a, node_b in edges:
+        degrees[node_a] += 1
+        degrees[node_b] += 1
+    return degrees
+
+
+def compute_effective_bandwidth(
+    edge_loads: dict[tuple[int, int], float],
+    communication_time: float,
+    node_count: int,
+) -> list[float]:
+    totals = [0.0 for _ in range(node_count)]
+    for (node_a, node_b), load in edge_loads.items():
+        totals[node_a] += load
+        totals[node_b] += load
+    if communication_time <= 0:
+        return [0.0 for _ in range(node_count)]
+    return [total / communication_time for total in totals]
 
 
 def handle_generate_traffic(args: argparse.Namespace) -> None:
@@ -69,6 +99,20 @@ def handle_optimize(args: argparse.Namespace) -> None:
         N,
         PORTS_PER_CHIP,
     )
+    degrees = compute_degrees(result.best_topology.edges(), N)
+    avg_degree = sum(degrees) / N if N else 0.0
+    effective_bandwidth = compute_effective_bandwidth(
+        result.best_result.edge_loads,
+        best_time,
+        N,
+    )
+    avg_effective_bandwidth = sum(effective_bandwidth) / N if N else 0.0
+    routing_config = {
+        "strategy": ROUTING_STRATEGY,
+        "max_shortest_paths": MAX_SHORTEST_PATHS,
+        "extra_hops": EXTRA_HOPS,
+        "routing_iterations": ROUTING_ITERATIONS,
+    }
     payload = {
         "best_result": {
             "communication_time": result.best_result.communication_time,
@@ -86,8 +130,23 @@ def handle_optimize(args: argparse.Namespace) -> None:
         "topology_plot": topology_plot,
         "drawio_path": drawio_path,
         "svg_path": svg_path,
+        "routing_config": routing_config,
+        "degrees": degrees,
+        "avg_degree": avg_degree,
+        "effective_bandwidth": effective_bandwidth,
+        "avg_effective_bandwidth": avg_effective_bandwidth,
     }
+    with open(args.summary_output, "w", encoding="utf-8") as handle:
+        json.dump(payload, handle, indent=2)
     print(json.dumps(payload, indent=2))
+    print("[optimize] routing_strategy=%s" % ROUTING_STRATEGY)
+    print("[optimize] communication_time=%.6f" % best_time)
+    print("[optimize] topology_edges=%s" % result.best_topology.edges())
+    print("[optimize] degrees=%s avg_degree=%.3f" % (degrees, avg_degree))
+    print(
+        "[optimize] effective_bandwidth=%s avg_effective_bandwidth=%.6f"
+        % (effective_bandwidth, avg_effective_bandwidth)
+    )
 
 
 def handle_export(args: argparse.Namespace) -> None:
@@ -155,6 +214,11 @@ def build_parser() -> argparse.ArgumentParser:
         "--svg-output",
         default="artifacts/topology.svg",
         help="Path to save SVG diagram output.",
+    )
+    optimize_parser.add_argument(
+        "--summary-output",
+        default="optimization_summary.json",
+        help="Path to save the optimization summary JSON.",
     )
     optimize_parser.set_defaults(func=handle_optimize)
 

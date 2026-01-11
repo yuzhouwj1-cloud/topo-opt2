@@ -138,6 +138,17 @@ def optimize_topology(
         if step + 1 >= min_iterations and no_improve >= EARLY_STOP_PATIENCE:
             break
 
+        if (step + 1) % 50 == 0:
+            print(
+                "[optimize] step=%d best_time=%.6f current_time=%.6f temp=%.4f"
+                % (
+                    step + 1,
+                    best_result.communication_time,
+                    current_result.communication_time,
+                    temperature,
+                )
+            )
+
     return OptimizationResult(best_topology, best_result, history)
 
 
