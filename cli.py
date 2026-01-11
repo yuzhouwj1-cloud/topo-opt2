@@ -44,7 +44,11 @@ def handle_simulate(args: argparse.Namespace) -> None:
 
 
 def handle_optimize(args: argparse.Namespace) -> None:
-    result = optimize_topology(iterations=args.iterations, seed=args.seed)
+    result = optimize_topology(
+        iterations=args.iterations,
+        seed=args.seed,
+        resume_path=args.resume_path,
+    )
     save_optimization(result, args.output)
     best_time = result.best_result.communication_time
     ports_needed = equivalent_switch_ports(best_time)
@@ -114,6 +118,11 @@ def build_parser() -> argparse.ArgumentParser:
     optimize_parser.add_argument("--iterations", type=int, default=200)
     optimize_parser.add_argument("--seed", type=int, default=DEFAULT_RANDOM_SEED)
     optimize_parser.add_argument("--output", default="optimization_result.json")
+    optimize_parser.add_argument(
+        "--resume-path",
+        default=None,
+        help="Path to a JSON file containing a saved topology edges list.",
+    )
     optimize_parser.add_argument(
         "--history-plot",
         default="artifacts/optimization_history.png",
