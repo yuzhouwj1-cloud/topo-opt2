@@ -1,9 +1,9 @@
 """Global configuration for topology optimization."""
 
-N = 32
-A_GROUP_SIZE = 20
-B_GROUP_SIZE = 12
-PORTS_PER_CHIP = 9
+N = 128
+A_GROUP_SIZE = 64
+B_GROUP_SIZE = 64
+PORTS_PER_CHIP = 11
 DEFAULT_RANDOM_SEED = 42
 
 TRAFFIC_VOLUME = 1.0
