@@ -22,6 +22,7 @@ from topo_config import (
     SEARCH_STRATEGY,
     STAGNATION_LIMIT,
     SWAP_EDGES,
+    CANDIDATE_POOL,
 )
 from topology import (
     Topology,
@@ -75,22 +76,32 @@ def optimize_topology(
     min_iterations = max(MIN_ITERATIONS, 1)
 
     for step in range(iterations):
-        candidate_topology = Topology(
-            adjacency={k: set(v) for k, v in current_topology.adjacency.items()}
-        )
-        for _ in range(max(1, REWIRE_EDGES)):
-            candidate_topology = random_rewire(
-                candidate_topology,
-                seed=rng.randint(0, 10**9),
+        candidate_topology = None
+        candidate_result = None
+        candidate_score = None
+        for _ in range(max(1, CANDIDATE_POOL)):
+            proposal = Topology(
+                adjacency={k: set(v) for k, v in current_topology.adjacency.items()}
             )
-        for _ in range(max(0, SWAP_EDGES)):
-            candidate_topology = random_swap_edges(
-                candidate_topology,
-                seed=rng.randint(0, 10**9),
-            )
-        candidate_result = simulate(candidate_topology, traffic)
-        history.append(candidate_result)
-        candidate_score = score(candidate_result)
+            for _ in range(max(1, REWIRE_EDGES)):
+                proposal = random_rewire(
+                    proposal,
+                    seed=rng.randint(0, 10**9),
+                )
+            for _ in range(max(0, SWAP_EDGES)):
+                proposal = random_swap_edges(
+                    proposal,
+                    seed=rng.randint(0, 10**9),
+                )
+            proposal_result = simulate(proposal, traffic)
+            history.append(proposal_result)
+            proposal_score = score(proposal_result)
+            if candidate_score is None or proposal_score < candidate_score:
+                candidate_topology = proposal
+                candidate_result = proposal_result
+                candidate_score = proposal_score
+        if candidate_topology is None or candidate_result is None or candidate_score is None:
+            continue
 
         if candidate_score < best_score:
             best_topology = candidate_topology
@@ -126,6 +137,17 @@ def optimize_topology(
 
         if step + 1 >= min_iterations and no_improve >= EARLY_STOP_PATIENCE:
             break
+
+        if (step + 1) % 50 == 0:
+            print(
+                "[optimize] step=%d best_time=%.6f current_time=%.6f temp=%.4f"
+                % (
+                    step + 1,
+                    best_result.communication_time,
+                    current_result.communication_time,
+                    temperature,
+                )
+            )
 
     return OptimizationResult(best_topology, best_result, history)
 
