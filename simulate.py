@@ -4,9 +4,19 @@ from __future__ import annotations
 
 from collections import deque
 from dataclasses import dataclass
+import random
 from typing import Dict, Iterable, List, Optional, Tuple
 
-from topo_config import EXTRA_HOPS, MAX_SHORTEST_PATHS, ROUTING_ITERATIONS, ROUTING_STRATEGY
+from topo_config import (
+    A_GROUP_SIZE,
+    B_GROUP_SIZE,
+    EXTRA_HOPS,
+    MAX_SHORTEST_PATHS,
+    RELAY_IMPROVEMENT_THRESHOLD,
+    RELAY_SELECTION_SEED,
+    ROUTING_ITERATIONS,
+    ROUTING_STRATEGY,
+)
 from traffic import TrafficDemand
 from topology import Topology
 
@@ -135,15 +145,23 @@ def _path_cost(path: List[int], edge_loads: Dict[Edge, float]) -> float:
     return sum(edge_loads.get(edge, 0.0) + 1.0 for edge in edges)
 
 
-def _enumerate_paths(topology: Topology, demand: TrafficDemand) -> List[List[int]]:
-    if ROUTING_STRATEGY in {"shortest_multipath", "adaptive_multipath"}:
+def _enumerate_paths(
+    topology: Topology,
+    demand: TrafficDemand,
+    routing_strategy: str,
+) -> List[List[int]]:
+    if routing_strategy in {
+        "shortest_multipath",
+        "adaptive_multipath",
+        "adaptive_selective_relay_b",
+    }:
         return _all_shortest_paths(
             topology,
             demand.source,
             demand.destination,
             MAX_SHORTEST_PATHS,
         )
-    if ROUTING_STRATEGY in {"bounded_multipath", "adaptive_bounded_multipath"}:
+    if routing_strategy in {"bounded_multipath", "adaptive_bounded_multipath"}:
         return _bounded_shortest_paths(
             topology,
             demand.source,
@@ -154,26 +172,140 @@ def _enumerate_paths(topology: Topology, demand: TrafficDemand) -> List[List[int
     return []
 
 
+def _all_pairs_shortest_distances(topology: Topology, node_count: int) -> List[List[int]]:
+    distances = [[-1 for _ in range(node_count)] for _ in range(node_count)]
+    for src in range(node_count):
+        distances[src][src] = 0
+        queue: deque[int] = deque([src])
+        while queue:
+            node = queue.popleft()
+            for neighbor in topology.neighbors(node):
+                if distances[src][neighbor] != -1:
+                    continue
+                distances[src][neighbor] = distances[src][node] + 1
+                queue.append(neighbor)
+    return distances
+
+
+def _select_relay_candidate(
+    src: int,
+    targets: List[TrafficDemand],
+    distances: List[List[int]],
+) -> Optional[int]:
+    candidates = [demand.destination for demand in targets]
+    rng = random.Random(RELAY_SELECTION_SEED + src)
+    best_cost = None
+    best_candidates: List[int] = []
+    for relay in candidates:
+        cost_src = distances[src][relay]
+        if cost_src < 0:
+            continue
+        total_cost = cost_src
+        for demand in targets:
+            if demand.destination == relay:
+                continue
+            cost_relay = distances[relay][demand.destination]
+            if cost_relay < 0:
+                total_cost = None
+                break
+            total_cost += cost_relay
+        if total_cost is None:
+            continue
+        if best_cost is None or total_cost < best_cost:
+            best_cost = total_cost
+            best_candidates = [relay]
+        elif total_cost == best_cost:
+            best_candidates.append(relay)
+    if not best_candidates:
+        return None
+    return rng.choice(best_candidates)
+
+
+def _selective_relay_b_traffic(
+    topology: Topology,
+    traffic: Iterable[TrafficDemand],
+) -> List[TrafficDemand]:
+    """Route some A->B demands via a single relay in group B when beneficial."""
+    node_count = A_GROUP_SIZE + B_GROUP_SIZE
+    distances = _all_pairs_shortest_distances(topology, node_count)
+    grouped: Dict[int, List[TrafficDemand]] = {}
+    passthrough: List[TrafficDemand] = []
+    b_start = A_GROUP_SIZE
+    b_end = A_GROUP_SIZE + B_GROUP_SIZE
+    for demand in traffic:
+        if 0 <= demand.source < A_GROUP_SIZE and b_start <= demand.destination < b_end:
+            grouped.setdefault(demand.source, []).append(demand)
+        else:
+            passthrough.append(demand)
+
+    result: List[TrafficDemand] = list(passthrough)
+    for src, targets in grouped.items():
+        relay = _select_relay_candidate(src, targets, distances)
+        if relay is None:
+            result.extend(targets)
+            continue
+        forwarded: List[TrafficDemand] = []
+        direct: List[TrafficDemand] = []
+        cost_src_relay = distances[src][relay]
+        for demand in targets:
+            if demand.destination == relay:
+                continue
+            cost_direct = distances[demand.source][demand.destination]
+            cost_relay_dst = distances[relay][demand.destination]
+            cost_via = None
+            if cost_src_relay >= 0 and cost_relay_dst >= 0:
+                cost_via = cost_src_relay + cost_relay_dst
+            if cost_direct < 0 and cost_via is None:
+                continue
+            if cost_direct < 0:
+                forwarded.append(demand)
+                continue
+            if cost_via is None:
+                direct.append(demand)
+                continue
+            if cost_via <= cost_direct * (1.0 - RELAY_IMPROVEMENT_THRESHOLD):
+                forwarded.append(demand)
+            else:
+                direct.append(demand)
+
+        if forwarded:
+            result.append(TrafficDemand(src, relay, targets[0].volume))
+            result.extend(TrafficDemand(relay, d.destination, d.volume) for d in forwarded)
+            result.extend(direct)
+        else:
+            result.extend(targets)
+    return result
+
+
 def _route_loads(
     topology: Topology,
     traffic: Iterable[TrafficDemand],
     edge_loads_seed: Dict[Edge, float],
+    routing_strategy: str,
 ) -> tuple[Dict[Edge, float], int]:
     edge_loads: Dict[Edge, float] = {}
     disconnected = 0
 
+    if routing_strategy == "adaptive_selective_relay_b":
+        traffic = _selective_relay_b_traffic(topology, traffic)
+
     for demand in traffic:
-        if ROUTING_STRATEGY in {
+        if routing_strategy in {
             "shortest_multipath",
             "adaptive_multipath",
+            "adaptive_selective_relay_b",
             "bounded_multipath",
             "adaptive_bounded_multipath",
         }:
-            paths = _enumerate_paths(topology, demand)
+            paths = _enumerate_paths(topology, demand, routing_strategy)
             if not paths:
                 disconnected += 1
                 continue
-            if ROUTING_STRATEGY in {"adaptive_multipath", "adaptive_bounded_multipath"}:
+            if routing_strategy in {
+                "adaptive_multipath",
+                "adaptive_selective_relay_b",
+                "adaptive_bounded_multipath",
+            }:
                 costs = [_path_cost(path, edge_loads_seed) for path in paths]
                 total_weight = sum(1.0 / cost for cost in costs if cost > 0)
                 if total_weight == 0:
@@ -200,15 +332,33 @@ def _route_loads(
     return edge_loads, disconnected
 
 
-def simulate(topology: Topology, traffic: Iterable[TrafficDemand]) -> SimulationResult:
+def simulate(
+    topology: Topology,
+    traffic: Iterable[TrafficDemand],
+    routing_strategy: str = ROUTING_STRATEGY,
+) -> SimulationResult:
     edge_loads: Dict[Edge, float] = {}
     disconnected = 0
 
-    if ROUTING_STRATEGY in {"adaptive_multipath", "adaptive_bounded_multipath"}:
+    if routing_strategy in {
+        "adaptive_multipath",
+        "adaptive_selective_relay_b",
+        "adaptive_bounded_multipath",
+    }:
         for _ in range(max(1, ROUTING_ITERATIONS)):
-            edge_loads, disconnected = _route_loads(topology, traffic, edge_loads)
+            edge_loads, disconnected = _route_loads(
+                topology,
+                traffic,
+                edge_loads,
+                routing_strategy,
+            )
     else:
-        edge_loads, disconnected = _route_loads(topology, traffic, edge_loads)
+        edge_loads, disconnected = _route_loads(
+            topology,
+            traffic,
+            edge_loads,
+            routing_strategy,
+        )
 
     max_edge_load = max(edge_loads.values(), default=0.0)
     communication_time = max_edge_load

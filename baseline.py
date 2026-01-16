@@ -3,8 +3,10 @@
 from __future__ import annotations
 
 import math
+from typing import Iterable
 
 from topo_config import A_GROUP_SIZE, B_GROUP_SIZE, TRAFFIC_VOLUME
+from traffic import TrafficDemand
 
 
 def switch_communication_time(
@@ -36,3 +38,38 @@ def equivalent_switch_ports(
         raise ValueError("target_time must be positive")
     demand = max(a_size, b_size) * volume
     return math.ceil(demand / target_time)
+
+
+def switch_communication_time_for_traffic(
+    traffic: Iterable[TrafficDemand],
+    ports_per_chip: int,
+) -> float:
+    """Compute switch time based on actual traffic demand volumes."""
+    if ports_per_chip <= 0:
+        raise ValueError("ports_per_chip must be positive")
+    source_totals = {}
+    dest_totals = {}
+    for demand in traffic:
+        source_totals[demand.source] = source_totals.get(demand.source, 0.0) + demand.volume
+        dest_totals[demand.destination] = dest_totals.get(demand.destination, 0.0) + demand.volume
+    max_source = max(source_totals.values(), default=0.0)
+    max_dest = max(dest_totals.values(), default=0.0)
+    return max(max_source / ports_per_chip, max_dest / ports_per_chip)
+
+
+def equivalent_switch_ports_for_traffic(
+    target_time: float,
+    traffic: Iterable[TrafficDemand],
+) -> int:
+    """Compute switch ports needed to match target time for given traffic."""
+    if target_time <= 0:
+        raise ValueError("target_time must be positive")
+    source_totals = {}
+    dest_totals = {}
+    for demand in traffic:
+        source_totals[demand.source] = source_totals.get(demand.source, 0.0) + demand.volume
+        dest_totals[demand.destination] = dest_totals.get(demand.destination, 0.0) + demand.volume
+    max_source = max(source_totals.values(), default=0.0)
+    max_dest = max(dest_totals.values(), default=0.0)
+    demand = max(max_source, max_dest)
+    return max(1, math.ceil(demand / target_time))
