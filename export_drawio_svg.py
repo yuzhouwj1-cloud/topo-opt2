@@ -16,7 +16,7 @@
 
 import xml.etree.ElementTree as ET
 from pathlib import Path
-from typing import Dict, Iterable, List, Tuple
+from typing import Dict, Iterable, List, Tuple, Union
 
 from topology import Topology
 
@@ -291,10 +291,10 @@ def generate_graph_files(edges: List[Tuple[int, int]],
 
 
 def export_drawio_svg(
-    topology: Topology | Iterable[Tuple[int, int]],
+    topology: Union[Topology, Iterable[Tuple[int, int]]],
     drawio_path: str,
     svg_path: str,
-) -> tuple[str, str]:
+) -> Tuple[str, str]:
     """Export draw.io and SVG diagrams for a topology or edge list."""
     edges = topology.edges() if isinstance(topology, Topology) else list(topology)
     drawio_parent = Path(drawio_path).parent

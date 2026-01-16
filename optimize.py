@@ -6,7 +6,7 @@ from dataclasses import dataclass
 import json
 import os
 import random
-from typing import List
+from typing import List, Optional
 
 from simulate import SimulationResult, simulate
 from topo_config import (
@@ -44,7 +44,7 @@ class OptimizationResult:
 def optimize_topology(
     iterations: int = 200,
     seed: int = DEFAULT_RANDOM_SEED,
-    resume_path: str | None = RESUME_STATE_PATH,
+    resume_path: Optional[str] = RESUME_STATE_PATH,
 ) -> OptimizationResult:
     rng = random.Random(seed)
     traffic = generate_full_mesh_traffic()
