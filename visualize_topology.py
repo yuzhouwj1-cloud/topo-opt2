@@ -4,12 +4,12 @@ from __future__ import annotations
 
 import importlib.util
 import os
-from typing import Dict
+from typing import Dict, Optional
 
 from topology import Topology
 
 
-def visualize_topology(topology: Topology, path: str | None = None) -> str | None:
+def visualize_topology(topology: Topology, path: Optional[str] = None) -> Optional[str]:
     if importlib.util.find_spec("matplotlib") is None or importlib.util.find_spec("networkx") is None:
         return path
 

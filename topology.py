@@ -5,7 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 import json
 import random
-from typing import Dict, Iterable, List, Set, Tuple
+from typing import Dict, Iterable, List, Optional, Set, Tuple
 
 from topo_config import A_GROUP_SIZE, ALLOW_INTRA_GROUP, B_GROUP_SIZE, PORTS_PER_CHIP
 
@@ -57,7 +57,7 @@ def build_initial_topology(
     b_size: int = B_GROUP_SIZE,
     ports_per_chip: int = PORTS_PER_CHIP,
     allow_intra_group: bool = ALLOW_INTRA_GROUP,
-    seed: int | None = None,
+    seed: Optional[int] = None,
 ) -> Topology:
     """Create an initial topology between chips."""
     rng = random.Random(seed)
@@ -145,7 +145,7 @@ def random_rewire(
     b_size: int = B_GROUP_SIZE,
     ports_per_chip: int = PORTS_PER_CHIP,
     allow_intra_group: bool = ALLOW_INTRA_GROUP,
-    seed: int | None = None,
+    seed: Optional[int] = None,
 ) -> Topology:
     """Randomly rewire a single edge while respecting port limits."""
     rng = random.Random(seed)
@@ -191,7 +191,7 @@ def random_rewire(
 
 def random_swap_edges(
     topology: Topology,
-    seed: int | None = None,
+    seed: Optional[int] = None,
 ) -> Topology:
     """Swap endpoints between two edges to explore larger moves."""
     rng = random.Random(seed)

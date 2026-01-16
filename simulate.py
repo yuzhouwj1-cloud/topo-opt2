@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from collections import deque
 from dataclasses import dataclass
-from typing import Dict, Iterable, List, Tuple
+from typing import Dict, Iterable, List, Optional, Tuple
 
 from topo_config import EXTRA_HOPS, MAX_SHORTEST_PATHS, ROUTING_ITERATIONS, ROUTING_STRATEGY
 from traffic import TrafficDemand
@@ -22,7 +22,7 @@ class SimulationResult:
 Edge = Tuple[int, int]
 
 
-def _shortest_path(topology: Topology, start: int, goal: int) -> List[int] | None:
+def _shortest_path(topology: Topology, start: int, goal: int) -> Optional[List[int]]:
     if start == goal:
         return [start]
     visited = {start}
