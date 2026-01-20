@@ -18,6 +18,7 @@ from topo_config import (
     MIN_ITERATIONS,
     MOE_R,
     N,
+    PORTS_PER_CHIP,
     REWIRE_EDGES,
     RESUME_STATE_PATH,
     SEARCH_STRATEGY,
@@ -53,10 +54,11 @@ def optimize_topology(
     moe_r: int = MOE_R,
     traffic_seed: int = TRAFFIC_SEED,
     routing_strategy: str = ROUTING_STRATEGY,
+    ports_per_chip: int = PORTS_PER_CHIP,
 ) -> OptimizationResult:
     rng = random.Random(seed)
     traffic = generate_traffic(mode=traffic_mode, moe_r=moe_r, seed=traffic_seed)
-    current_topology = build_initial_topology(seed=seed)
+    current_topology = build_initial_topology(seed=seed, ports_per_chip=ports_per_chip)
     current_result = simulate(current_topology, traffic, routing_strategy=routing_strategy)
 
     if resume_path and os.path.exists(resume_path):
@@ -99,6 +101,7 @@ def optimize_topology(
                 proposal = random_rewire(
                     proposal,
                     seed=rng.randint(0, 10**9),
+                    ports_per_chip=ports_per_chip,
                 )
             for _ in range(max(0, SWAP_EDGES)):
                 proposal = random_swap_edges(
@@ -144,7 +147,10 @@ def optimize_topology(
                 current_score = candidate_score
 
         if stagnation >= STAGNATION_LIMIT:
-            current_topology = build_initial_topology(seed=rng.randint(0, 10**9))
+            current_topology = build_initial_topology(
+                seed=rng.randint(0, 10**9),
+                ports_per_chip=ports_per_chip,
+            )
             current_result = simulate(
                 current_topology,
                 traffic,

@@ -7,7 +7,7 @@ PORTS_PER_CHIP = 12
 DEFAULT_RANDOM_SEED = 42
 
 TRAFFIC_VOLUME = 1.0
-TRAFFIC_MODE = "full_mesh"
+TRAFFIC_MODE = "moe"
 MOE_R = 8
 TRAFFIC_SEED = DEFAULT_RANDOM_SEED
 
@@ -19,7 +19,9 @@ ROUTING_STRATEGY = "adaptive_multipath"
 MAX_SHORTEST_PATHS = 16
 EXTRA_HOPS = 1
 ROUTING_ITERATIONS = 4
+# Relay selection only matters when a source has multiple targets (e.g., MoE traffic).
 RELAY_IMPROVEMENT_THRESHOLD = 0.0
+RELAY_SELECTION_MODE = "load"
 RELAY_SELECTION_SEED = DEFAULT_RANDOM_SEED
 
 SEARCH_STRATEGY = "simulated_annealing"

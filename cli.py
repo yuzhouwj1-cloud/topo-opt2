@@ -5,7 +5,9 @@ import json
 
 from baseline import (
     equivalent_switch_ports_for_traffic,
+    equivalent_switch_ports_for_multicast_traffic,
     switch_communication_time_for_traffic,
+    switch_communication_time_for_multicast_traffic,
 )
 from export_drawio_svg import export_drawio_svg
 from export_topology import export_topology
@@ -137,9 +139,15 @@ def handle_optimize(args: argparse.Namespace) -> None:
         moe_r=args.moe_r,
         seed=args.traffic_seed,
     )
-    ports_needed = equivalent_switch_ports_for_traffic(best_time, traffic)
-    switch_time = switch_communication_time_for_traffic(traffic, ports_needed)
-    switch_time_4 = switch_communication_time_for_traffic(traffic, 4)
+    use_multicast = args.traffic_mode == "moe"
+    if use_multicast:
+        ports_needed = equivalent_switch_ports_for_multicast_traffic(best_time, traffic)
+        switch_time = switch_communication_time_for_multicast_traffic(traffic, ports_needed)
+        switch_time_4 = switch_communication_time_for_multicast_traffic(traffic, 4)
+    else:
+        ports_needed = equivalent_switch_ports_for_traffic(best_time, traffic)
+        switch_time = switch_communication_time_for_traffic(traffic, ports_needed)
+        switch_time_4 = switch_communication_time_for_traffic(traffic, 4)
     payload = {
         "best_result": {
             "communication_time": result.best_result.communication_time,
@@ -210,9 +218,15 @@ def handle_compare_switch(args: argparse.Namespace) -> None:
         seed=args.traffic_seed,
     )
     best_time = result.best_result.communication_time
-    ports_needed = equivalent_switch_ports_for_traffic(best_time, traffic)
-    switch_time = switch_communication_time_for_traffic(traffic, ports_needed)
-    switch_time_4 = switch_communication_time_for_traffic(traffic, 4)
+    use_multicast = args.traffic_mode == "moe"
+    if use_multicast:
+        ports_needed = equivalent_switch_ports_for_multicast_traffic(best_time, traffic)
+        switch_time = switch_communication_time_for_multicast_traffic(traffic, ports_needed)
+        switch_time_4 = switch_communication_time_for_multicast_traffic(traffic, 4)
+    else:
+        ports_needed = equivalent_switch_ports_for_traffic(best_time, traffic)
+        switch_time = switch_communication_time_for_traffic(traffic, ports_needed)
+        switch_time_4 = switch_communication_time_for_traffic(traffic, 4)
     payload = {
         "best_time": best_time,
         "ports_needed": ports_needed,

@@ -7,10 +7,12 @@ for a fixed a→b traffic pattern (all sources in group A sending to all destina
 
 * **`traffic.py`** builds the a→b traffic matrix and demand list.
 * **`topology.py`** represents the topology graph and implements rewiring moves.
-* **`simulate.py`** routes traffic (with multipath strategies) and estimates communication time.
+* **`simulate.py`** routes traffic (with multipath strategies) and estimates communication time;
+  relay selection only matters when a source has multiple targets (e.g., MoE traffic).
 * **`optimize.py`** searches for better topologies using simulated annealing + rewires/swaps,
   with optional resume and early stopping.
-* **`baseline.py`** computes the equivalent switch baseline for comparison.
+* **`baseline.py`** computes the equivalent switch baseline for comparison; for MoE
+  traffic it assumes each source sends one shared payload (multicast at the switch).
 * **`visualize_history.py`** plots the iteration vs communication-time curve (if matplotlib exists).
 * **`visualize_topology.py`** draws the topology graph (if matplotlib + networkx exist).
 * **`export_drawio_svg.py`** exports draw.io and SVG diagrams for the optimized topology.

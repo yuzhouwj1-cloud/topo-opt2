@@ -13,6 +13,7 @@ from topo_config import (
     EXTRA_HOPS,
     MAX_SHORTEST_PATHS,
     RELAY_IMPROVEMENT_THRESHOLD,
+    RELAY_SELECTION_MODE,
     RELAY_SELECTION_SEED,
     ROUTING_ITERATIONS,
     ROUTING_STRATEGY,
@@ -145,6 +146,19 @@ def _path_cost(path: List[int], edge_loads: Dict[Edge, float]) -> float:
     return sum(edge_loads.get(edge, 0.0) + 1.0 for edge in edges)
 
 
+def _min_path_cost(
+    topology: Topology,
+    start: int,
+    goal: int,
+    edge_loads: Dict[Edge, float],
+    max_paths: int,
+) -> Optional[float]:
+    paths = _all_shortest_paths(topology, start, goal, max_paths)
+    if not paths:
+        return None
+    return min(_path_cost(path, edge_loads) for path in paths)
+
+
 def _enumerate_paths(
     topology: Topology,
     demand: TrafficDemand,
@@ -188,26 +202,52 @@ def _all_pairs_shortest_distances(topology: Topology, node_count: int) -> List[L
 
 
 def _select_relay_candidate(
+    topology: Topology,
     src: int,
     targets: List[TrafficDemand],
     distances: List[List[int]],
+    edge_loads_seed: Dict[Edge, float],
+    relay_selection_mode: str,
 ) -> Optional[int]:
     candidates = [demand.destination for demand in targets]
     rng = random.Random(RELAY_SELECTION_SEED + src)
     best_cost = None
     best_candidates: List[int] = []
     for relay in candidates:
-        cost_src = distances[src][relay]
-        if cost_src < 0:
-            continue
+        if relay_selection_mode == "load":
+            cost_src = _min_path_cost(
+                topology,
+                src,
+                relay,
+                edge_loads_seed,
+                MAX_SHORTEST_PATHS,
+            )
+            if cost_src is None:
+                continue
+        else:
+            cost_src = distances[src][relay]
+            if cost_src < 0:
+                continue
         total_cost = cost_src
         for demand in targets:
             if demand.destination == relay:
                 continue
-            cost_relay = distances[relay][demand.destination]
-            if cost_relay < 0:
-                total_cost = None
-                break
+            if relay_selection_mode == "load":
+                cost_relay = _min_path_cost(
+                    topology,
+                    relay,
+                    demand.destination,
+                    edge_loads_seed,
+                    MAX_SHORTEST_PATHS,
+                )
+                if cost_relay is None:
+                    total_cost = None
+                    break
+            else:
+                cost_relay = distances[relay][demand.destination]
+                if cost_relay < 0:
+                    total_cost = None
+                    break
             total_cost += cost_relay
         if total_cost is None:
             continue
@@ -224,8 +264,12 @@ def _select_relay_candidate(
 def _selective_relay_b_traffic(
     topology: Topology,
     traffic: Iterable[TrafficDemand],
+    edge_loads_seed: Dict[Edge, float],
 ) -> List[TrafficDemand]:
-    """Route some A->B demands via a single relay in group B when beneficial."""
+    """Route some A->B demands via a single relay in group B when beneficial.
+
+    Relay selection only matters when a source has multiple targets (e.g., MoE traffic).
+    """
     node_count = A_GROUP_SIZE + B_GROUP_SIZE
     distances = _all_pairs_shortest_distances(topology, node_count)
     grouped: Dict[int, List[TrafficDemand]] = {}
@@ -240,24 +284,49 @@ def _selective_relay_b_traffic(
 
     result: List[TrafficDemand] = list(passthrough)
     for src, targets in grouped.items():
-        relay = _select_relay_candidate(src, targets, distances)
+        relay = _select_relay_candidate(
+            topology,
+            src,
+            targets,
+            distances,
+            edge_loads_seed,
+            RELAY_SELECTION_MODE,
+        )
         if relay is None:
             result.extend(targets)
             continue
         forwarded: List[TrafficDemand] = []
         direct: List[TrafficDemand] = []
-        cost_src_relay = distances[src][relay]
+        cost_src_relay = _min_path_cost(
+            topology,
+            src,
+            relay,
+            edge_loads_seed,
+            MAX_SHORTEST_PATHS,
+        )
         for demand in targets:
             if demand.destination == relay:
                 continue
-            cost_direct = distances[demand.source][demand.destination]
-            cost_relay_dst = distances[relay][demand.destination]
+            cost_direct = _min_path_cost(
+                topology,
+                demand.source,
+                demand.destination,
+                edge_loads_seed,
+                MAX_SHORTEST_PATHS,
+            )
+            cost_relay_dst = _min_path_cost(
+                topology,
+                relay,
+                demand.destination,
+                edge_loads_seed,
+                MAX_SHORTEST_PATHS,
+            )
             cost_via = None
-            if cost_src_relay >= 0 and cost_relay_dst >= 0:
+            if cost_src_relay is not None and cost_relay_dst is not None:
                 cost_via = cost_src_relay + cost_relay_dst
-            if cost_direct < 0 and cost_via is None:
+            if cost_direct is None and cost_via is None:
                 continue
-            if cost_direct < 0:
+            if cost_direct is None:
                 forwarded.append(demand)
                 continue
             if cost_via is None:
@@ -287,7 +356,7 @@ def _route_loads(
     disconnected = 0
 
     if routing_strategy == "adaptive_selective_relay_b":
-        traffic = _selective_relay_b_traffic(topology, traffic)
+        traffic = _selective_relay_b_traffic(topology, traffic, edge_loads_seed)
 
     for demand in traffic:
         if routing_strategy in {
