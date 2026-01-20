@@ -9,6 +9,8 @@ for a fixed a→b traffic pattern (all sources in group A sending to all destina
 * **`topology.py`** represents the topology graph and implements rewiring moves.
 * **`simulate.py`** routes traffic (with multipath strategies) and estimates communication time;
   relay selection only matters when a source has multiple targets (e.g., MoE traffic).
+  It also supports async timing (Poisson start times) with time-evolving link loads and
+  reports mean/variance of per-request completion times.
 * **`optimize.py`** searches for better topologies using simulated annealing + rewires/swaps,
   with optional resume and early stopping.
 * **`baseline.py`** computes the equivalent switch baseline for comparison; for MoE
@@ -48,6 +50,16 @@ python cli.py optimize --iterations 1500 --seed 42 \
 Simulate the initial topology:
 ```bash
 python cli.py simulate --seed 42
+```
+
+Simulate with async timing:
+```bash
+python cli.py simulate --seed 42 --timing-model async
+```
+
+Async-optimized routing (relay + multipath, async-aware):
+```bash
+python cli.py simulate --seed 42 --timing-model async --routing-strategy async_optimized
 ```
 
 Export the initial topology to JSON:

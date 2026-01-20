@@ -6,14 +6,19 @@ import json
 from baseline import (
     equivalent_switch_ports_for_traffic,
     equivalent_switch_ports_for_multicast_traffic,
+    generate_async_start_times,
     switch_communication_time_for_traffic,
     switch_communication_time_for_multicast_traffic,
+    switch_async_request_stats,
 )
 from export_drawio_svg import export_drawio_svg
 from export_topology import export_topology
 from optimize import optimize_topology, save_optimization
 from simulate import simulate
 from topo_config import (
+    A_GROUP_SIZE,
+    ASYNC_START_LAMBDA,
+    ASYNC_START_SEED,
     DEFAULT_RANDOM_SEED,
     MOE_R,
     N,
@@ -22,6 +27,7 @@ from topo_config import (
     MAX_SHORTEST_PATHS,
     EXTRA_HOPS,
     ROUTING_ITERATIONS,
+    TIMING_MODEL,
     TRAFFIC_MODE,
     TRAFFIC_SEED,
 )
@@ -90,11 +96,23 @@ def handle_simulate(args: argparse.Namespace) -> None:
         seed=args.traffic_seed,
     )
     topology = build_initial_topology(seed=args.seed)
-    result = simulate(topology, traffic, routing_strategy=args.routing_strategy)
+    result = simulate(
+        topology,
+        traffic,
+        routing_strategy=args.routing_strategy,
+        timing_model=args.timing_model,
+    )
     print(result)
 
 
 def handle_optimize(args: argparse.Namespace) -> None:
+    start_times = None
+    if args.timing_model == "async":
+        start_times = generate_async_start_times(
+            A_GROUP_SIZE,
+            ASYNC_START_LAMBDA,
+            ASYNC_START_SEED,
+        )
     result = optimize_topology(
         iterations=args.iterations,
         seed=args.seed,
@@ -103,6 +121,8 @@ def handle_optimize(args: argparse.Namespace) -> None:
         moe_r=args.moe_r,
         traffic_seed=args.traffic_seed,
         routing_strategy=args.routing_strategy,
+        timing_model=args.timing_model,
+        start_times=start_times,
     )
     save_optimization(result, args.output)
     drawio_path, svg_path = export_drawio_svg(
@@ -133,6 +153,7 @@ def handle_optimize(args: argparse.Namespace) -> None:
         "max_shortest_paths": MAX_SHORTEST_PATHS,
         "extra_hops": EXTRA_HOPS,
         "routing_iterations": ROUTING_ITERATIONS,
+        "timing_model": args.timing_model,
     }
     traffic = generate_traffic(
         mode=args.traffic_mode,
@@ -142,23 +163,44 @@ def handle_optimize(args: argparse.Namespace) -> None:
     use_multicast = args.traffic_mode == "moe"
     if use_multicast:
         ports_needed = equivalent_switch_ports_for_multicast_traffic(best_time, traffic)
-        switch_time = switch_communication_time_for_multicast_traffic(traffic, ports_needed)
-        switch_time_4 = switch_communication_time_for_multicast_traffic(traffic, 4)
     else:
         ports_needed = equivalent_switch_ports_for_traffic(best_time, traffic)
-        switch_time = switch_communication_time_for_traffic(traffic, ports_needed)
-        switch_time_4 = switch_communication_time_for_traffic(traffic, 4)
+
+    switch_time_variance = None
+    switch_time_4_variance = None
+    if args.timing_model == "async" and start_times is not None:
+        _, switch_time, switch_time_variance = switch_async_request_stats(
+            traffic,
+            ports_needed,
+            start_times,
+        )
+        _, switch_time_4, switch_time_4_variance = switch_async_request_stats(
+            traffic,
+            4,
+            start_times,
+        )
+    else:
+        if use_multicast:
+            switch_time = switch_communication_time_for_multicast_traffic(traffic, ports_needed)
+            switch_time_4 = switch_communication_time_for_multicast_traffic(traffic, 4)
+        else:
+            switch_time = switch_communication_time_for_traffic(traffic, ports_needed)
+            switch_time_4 = switch_communication_time_for_traffic(traffic, 4)
     payload = {
         "best_result": {
             "communication_time": result.best_result.communication_time,
             "max_edge_load": result.best_result.max_edge_load,
             "disconnected_flows": result.best_result.disconnected_flows,
+            "request_time_mean": result.best_result.request_time_mean,
+            "request_time_variance": result.best_result.request_time_variance,
         },
         "switch_baseline": {
             "ports_per_chip": ports_needed,
             "communication_time": switch_time,
+            "variance": switch_time_variance,
         },
         "switch_4_port_time": switch_time_4,
+        "switch_4_port_variance": switch_time_4_variance,
         "traffic_matrix": traffic_matrix(traffic=traffic),
         "port_utilization": utilization,
         "history_plot": history_plot,
@@ -183,6 +225,8 @@ def handle_optimize(args: argparse.Namespace) -> None:
     print("[optimize] routing_strategy=%s" % args.routing_strategy)
     print("[optimize] communication_time=%.6f" % best_time)
     print("[optimize] switch_4_port_time=%.6f" % switch_time_4)
+    if switch_time_4_variance is not None:
+        print("[optimize] switch_4_port_variance=%.6f" % switch_time_4_variance)
     print("[optimize] topology_edges=%s" % result.best_topology.edges())
     print("[optimize] degrees=%s avg_degree=%.3f" % (degrees, avg_degree))
     print(
@@ -204,6 +248,13 @@ def handle_visualize(args: argparse.Namespace) -> None:
 
 
 def handle_compare_switch(args: argparse.Namespace) -> None:
+    start_times = None
+    if args.timing_model == "async":
+        start_times = generate_async_start_times(
+            A_GROUP_SIZE,
+            ASYNC_START_LAMBDA,
+            ASYNC_START_SEED,
+        )
     result = optimize_topology(
         iterations=args.iterations,
         seed=args.seed,
@@ -211,6 +262,8 @@ def handle_compare_switch(args: argparse.Namespace) -> None:
         moe_r=args.moe_r,
         traffic_seed=args.traffic_seed,
         routing_strategy=args.routing_strategy,
+        timing_model=args.timing_model,
+        start_times=start_times,
     )
     traffic = generate_traffic(
         mode=args.traffic_mode,
@@ -221,17 +274,35 @@ def handle_compare_switch(args: argparse.Namespace) -> None:
     use_multicast = args.traffic_mode == "moe"
     if use_multicast:
         ports_needed = equivalent_switch_ports_for_multicast_traffic(best_time, traffic)
-        switch_time = switch_communication_time_for_multicast_traffic(traffic, ports_needed)
-        switch_time_4 = switch_communication_time_for_multicast_traffic(traffic, 4)
     else:
         ports_needed = equivalent_switch_ports_for_traffic(best_time, traffic)
-        switch_time = switch_communication_time_for_traffic(traffic, ports_needed)
-        switch_time_4 = switch_communication_time_for_traffic(traffic, 4)
+    switch_time_variance = None
+    switch_time_4_variance = None
+    if args.timing_model == "async" and start_times is not None:
+        _, switch_time, switch_time_variance = switch_async_request_stats(
+            traffic,
+            ports_needed,
+            start_times,
+        )
+        _, switch_time_4, switch_time_4_variance = switch_async_request_stats(
+            traffic,
+            4,
+            start_times,
+        )
+    else:
+        if use_multicast:
+            switch_time = switch_communication_time_for_multicast_traffic(traffic, ports_needed)
+            switch_time_4 = switch_communication_time_for_multicast_traffic(traffic, 4)
+        else:
+            switch_time = switch_communication_time_for_traffic(traffic, ports_needed)
+            switch_time_4 = switch_communication_time_for_traffic(traffic, 4)
     payload = {
         "best_time": best_time,
         "ports_needed": ports_needed,
         "switch_time": switch_time,
         "switch_4_port_time": switch_time_4,
+        "switch_time_variance": switch_time_variance,
+        "switch_4_port_variance": switch_time_4_variance,
     }
     print(json.dumps(payload, indent=2))
 
@@ -273,8 +344,14 @@ def build_parser() -> argparse.ArgumentParser:
             "bounded_multipath",
             "adaptive_bounded_multipath",
             "adaptive_selective_relay_b",
+            "async_optimized",
         ],
         default=ROUTING_STRATEGY,
+    )
+    simulate_parser.add_argument(
+        "--timing-model",
+        choices=["sync", "async"],
+        default=TIMING_MODEL,
     )
     simulate_parser.set_defaults(func=handle_simulate)
 
@@ -297,8 +374,14 @@ def build_parser() -> argparse.ArgumentParser:
             "bounded_multipath",
             "adaptive_bounded_multipath",
             "adaptive_selective_relay_b",
+            "async_optimized",
         ],
         default=ROUTING_STRATEGY,
+    )
+    optimize_parser.add_argument(
+        "--timing-model",
+        choices=["sync", "async"],
+        default=TIMING_MODEL,
     )
     optimize_parser.add_argument(
         "--resume-path",
@@ -363,8 +446,14 @@ def build_parser() -> argparse.ArgumentParser:
             "bounded_multipath",
             "adaptive_bounded_multipath",
             "adaptive_selective_relay_b",
+            "async_optimized",
         ],
         default=ROUTING_STRATEGY,
+    )
+    compare_parser.add_argument(
+        "--timing-model",
+        choices=["sync", "async"],
+        default=TIMING_MODEL,
     )
     compare_parser.set_defaults(func=handle_compare_switch)
 

@@ -1,0 +1,4676 @@
+{
+  "best_result": {
+    "communication_time": 3.9338924860783613,
+    "max_edge_load": 4.980150300331104,
+    "disconnected_flows": 0,
+    "request_time_mean": 3.9338924860783613,
+    "request_time_variance": 0.4703882547200145
+  },
+  "history": [
+    {
+      "communication_time": 3.9338924860783613,
+      "max_edge_load": 4.980150300331104,
+      "disconnected_flows": 0,
+      "request_time_mean": 3.9338924860783613,
+      "request_time_variance": 0.4703882547200145
+    },
+    {
+      "communication_time": 4.041464382458392,
+      "max_edge_load": 4.804758324459654,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.041464382458392,
+      "request_time_variance": 0.4208049541329503
+    },
+    {
+      "communication_time": 3.98714537699327,
+      "max_edge_load": 4.828607328291733,
+      "disconnected_flows": 0,
+      "request_time_mean": 3.98714537699327,
+      "request_time_variance": 0.44200802851377496
+    },
+    {
+      "communication_time": 3.979135224725587,
+      "max_edge_load": 4.730607958645246,
+      "disconnected_flows": 0,
+      "request_time_mean": 3.979135224725587,
+      "request_time_variance": 0.4431367547038036
+    },
+    {
+      "communication_time": 3.983563915651222,
+      "max_edge_load": 4.939921374910645,
+      "disconnected_flows": 0,
+      "request_time_mean": 3.983563915651222,
+      "request_time_variance": 0.43673233352651575
+    },
+    {
+      "communication_time": 4.034528675909674,
+      "max_edge_load": 4.153544484439502,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.034528675909674,
+      "request_time_variance": 0.5163695611301372
+    },
+    {
+      "communication_time": 4.097147496947255,
+      "max_edge_load": 4.698766637394898,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.097147496947255,
+      "request_time_variance": 0.47605762303194865
+    },
+    {
+      "communication_time": 4.0362094196094755,
+      "max_edge_load": 4.946444377319285,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.0362094196094755,
+      "request_time_variance": 0.5017321335157668
+    },
+    {
+      "communication_time": 4.0254652553200225,
+      "max_edge_load": 4.848182431640689,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.0254652553200225,
+      "request_time_variance": 0.4567009493292273
+    },
+    {
+      "communication_time": 3.969065329333759,
+      "max_edge_load": 4.616147017828168,
+      "disconnected_flows": 0,
+      "request_time_mean": 3.969065329333759,
+      "request_time_variance": 0.35669370436384984
+    },
+    {
+      "communication_time": 4.010162143066021,
+      "max_edge_load": 4.903099077812801,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.010162143066021,
+      "request_time_variance": 0.3632382978123185
+    },
+    {
+      "communication_time": 4.020729647299506,
+      "max_edge_load": 4.6049023100114335,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.020729647299506,
+      "request_time_variance": 0.3714378291587546
+    },
+    {
+      "communication_time": 4.06597373557857,
+      "max_edge_load": 4.380411983833379,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.06597373557857,
+      "request_time_variance": 0.592417668028074
+    },
+    {
+      "communication_time": 4.117149895997093,
+      "max_edge_load": 5.141772325432631,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.117149895997093,
+      "request_time_variance": 0.39015641958142266
+    },
+    {
+      "communication_time": 4.061884576265596,
+      "max_edge_load": 4.8492660060961885,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.061884576265596,
+      "request_time_variance": 0.4233209062071186
+    },
+    {
+      "communication_time": 4.086708737398008,
+      "max_edge_load": 4.468113656297147,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.086708737398008,
+      "request_time_variance": 0.4110322891213849
+    },
+    {
+      "communication_time": 4.067567217177641,
+      "max_edge_load": 4.126331090874539,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.067567217177641,
+      "request_time_variance": 0.44562082800806535
+    },
+    {
+      "communication_time": 4.039119866124263,
+      "max_edge_load": 4.37459211934153,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.039119866124263,
+      "request_time_variance": 0.3639150400127812
+    },
+    {
+      "communication_time": 4.045887439358167,
+      "max_edge_load": 4.697910910272879,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.045887439358167,
+      "request_time_variance": 0.4601802412071587
+    },
+    {
+      "communication_time": 4.114860420908195,
+      "max_edge_load": 4.370868056481315,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.114860420908195,
+      "request_time_variance": 0.3758328107367008
+    },
+    {
+      "communication_time": 4.079543633349118,
+      "max_edge_load": 5.183009767706945,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.079543633349118,
+      "request_time_variance": 0.34474040041966286
+    },
+    {
+      "communication_time": 4.035691729654971,
+      "max_edge_load": 5.461111160054475,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.035691729654971,
+      "request_time_variance": 0.354788945230609
+    },
+    {
+      "communication_time": 4.129426969518395,
+      "max_edge_load": 6.419401254049715,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.129426969518395,
+      "request_time_variance": 0.47016265891807824
+    },
+    {
+      "communication_time": 4.1134659830402525,
+      "max_edge_load": 5.581112623748804,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.1134659830402525,
+      "request_time_variance": 0.45786078898113775
+    },
+    {
+      "communication_time": 3.99996173582775,
+      "max_edge_load": 6.226935874526579,
+      "disconnected_flows": 0,
+      "request_time_mean": 3.99996173582775,
+      "request_time_variance": 0.30351449982319184
+    },
+    {
+      "communication_time": 4.077086442920265,
+      "max_edge_load": 5.511796246053792,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.077086442920265,
+      "request_time_variance": 0.592124032576026
+    },
+    {
+      "communication_time": 4.065540278169421,
+      "max_edge_load": 5.848008579535657,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.065540278169421,
+      "request_time_variance": 0.3675916126305446
+    },
+    {
+      "communication_time": 4.062160273760224,
+      "max_edge_load": 4.683653901365715,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.062160273760224,
+      "request_time_variance": 0.4503120592035479
+    },
+    {
+      "communication_time": 4.148342054310094,
+      "max_edge_load": 4.709013278353147,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.148342054310094,
+      "request_time_variance": 0.4409519528961457
+    },
+    {
+      "communication_time": 4.128263273511376,
+      "max_edge_load": 4.456896566559297,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.128263273511376,
+      "request_time_variance": 0.45399233227647773
+    },
+    {
+      "communication_time": 4.0839697432214,
+      "max_edge_load": 4.685387192951515,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.0839697432214,
+      "request_time_variance": 0.5014161082394428
+    },
+    {
+      "communication_time": 4.1221835499621955,
+      "max_edge_load": 5.619694520697186,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.1221835499621955,
+      "request_time_variance": 0.44402417746955336
+    },
+    {
+      "communication_time": 4.055211718545321,
+      "max_edge_load": 4.441881826521651,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.055211718545321,
+      "request_time_variance": 0.3939614479178902
+    },
+    {
+      "communication_time": 4.116624690454748,
+      "max_edge_load": 4.523980758915181,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.116624690454748,
+      "request_time_variance": 0.38363771522380574
+    },
+    {
+      "communication_time": 4.076506372543558,
+      "max_edge_load": 5.866223354250103,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.076506372543558,
+      "request_time_variance": 0.4735556859189968
+    },
+    {
+      "communication_time": 4.303625280200652,
+      "max_edge_load": 4.540931553222809,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.303625280200652,
+      "request_time_variance": 0.41415478085545016
+    },
+    {
+      "communication_time": 4.078656675292809,
+      "max_edge_load": 5.678050645875253,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.078656675292809,
+      "request_time_variance": 0.4672930676918496
+    },
+    {
+      "communication_time": 4.199240600956305,
+      "max_edge_load": 4.270230403701525,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.199240600956305,
+      "request_time_variance": 0.4710962369551019
+    },
+    {
+      "communication_time": 4.046206961341812,
+      "max_edge_load": 5.4603691953301094,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.046206961341812,
+      "request_time_variance": 0.4432076011712621
+    },
+    {
+      "communication_time": 4.222818477312569,
+      "max_edge_load": 4.910882972225947,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.222818477312569,
+      "request_time_variance": 0.5904389498550064
+    },
+    {
+      "communication_time": 4.0686586078142035,
+      "max_edge_load": 5.6340024163240985,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.0686586078142035,
+      "request_time_variance": 0.4306280693637592
+    },
+    {
+      "communication_time": 4.1730486456749745,
+      "max_edge_load": 5.02469428872623,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.1730486456749745,
+      "request_time_variance": 0.3881230046549039
+    },
+    {
+      "communication_time": 4.152744448827574,
+      "max_edge_load": 5.336251742411531,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.152744448827574,
+      "request_time_variance": 0.6035828378563385
+    },
+    {
+      "communication_time": 4.08896455447192,
+      "max_edge_load": 5.167239997083514,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.08896455447192,
+      "request_time_variance": 0.31398307034228634
+    },
+    {
+      "communication_time": 4.0231410870274775,
+      "max_edge_load": 4.525671261319938,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.0231410870274775,
+      "request_time_variance": 0.36798301463161787
+    },
+    {
+      "communication_time": 4.114056878476786,
+      "max_edge_load": 4.777192892416366,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.114056878476786,
+      "request_time_variance": 0.4277660713266187
+    },
+    {
+      "communication_time": 4.125342084277419,
+      "max_edge_load": 4.724357619274788,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.125342084277419,
+      "request_time_variance": 0.4178273012718492
+    },
+    {
+      "communication_time": 4.058049947396267,
+      "max_edge_load": 4.949207846523709,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.058049947396267,
+      "request_time_variance": 0.3179137719792299
+    },
+    {
+      "communication_time": 4.063290456797041,
+      "max_edge_load": 4.898931973317045,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.063290456797041,
+      "request_time_variance": 0.4819739718912277
+    },
+    {
+      "communication_time": 4.197875334196706,
+      "max_edge_load": 5.44078512067692,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.197875334196706,
+      "request_time_variance": 0.4619058265632293
+    },
+    {
+      "communication_time": 4.108200597729014,
+      "max_edge_load": 4.857879040468935,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.108200597729014,
+      "request_time_variance": 0.41326390239583327
+    },
+    {
+      "communication_time": 4.203127970993039,
+      "max_edge_load": 5.418397601210003,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.203127970993039,
+      "request_time_variance": 0.5383771115969453
+    },
+    {
+      "communication_time": 4.1304795886519,
+      "max_edge_load": 4.523746766758151,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.1304795886519,
+      "request_time_variance": 0.38610299186373737
+    },
+    {
+      "communication_time": 4.119508123606699,
+      "max_edge_load": 4.907227307056496,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.119508123606699,
+      "request_time_variance": 0.42100030081112866
+    },
+    {
+      "communication_time": 4.134119743322932,
+      "max_edge_load": 5.303655366981828,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.134119743322932,
+      "request_time_variance": 0.45666911959740913
+    },
+    {
+      "communication_time": 4.076978275556349,
+      "max_edge_load": 4.974455266789983,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.076978275556349,
+      "request_time_variance": 0.4436861071011119
+    },
+    {
+      "communication_time": 4.077040924023795,
+      "max_edge_load": 4.967916849718392,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.077040924023795,
+      "request_time_variance": 0.46798920447802295
+    },
+    {
+      "communication_time": 4.127231386070381,
+      "max_edge_load": 5.9265367740503025,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.127231386070381,
+      "request_time_variance": 0.3668626835106665
+    },
+    {
+      "communication_time": 4.05973860022405,
+      "max_edge_load": 4.8703424333209755,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.05973860022405,
+      "request_time_variance": 0.49134704527193657
+    },
+    {
+      "communication_time": 4.162631181544573,
+      "max_edge_load": 4.756482527805888,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.162631181544573,
+      "request_time_variance": 0.43340336441634836
+    },
+    {
+      "communication_time": 4.228439471562533,
+      "max_edge_load": 5.220102367524674,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.228439471562533,
+      "request_time_variance": 0.4475864733624555
+    },
+    {
+      "communication_time": 4.127527984674662,
+      "max_edge_load": 4.642255228074479,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.127527984674662,
+      "request_time_variance": 0.38530657086457887
+    },
+    {
+      "communication_time": 4.190803968264056,
+      "max_edge_load": 4.720101797760709,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.190803968264056,
+      "request_time_variance": 0.5372483855531421
+    },
+    {
+      "communication_time": 4.198137778622332,
+      "max_edge_load": 4.93440174594412,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.198137778622332,
+      "request_time_variance": 0.5054488377078976
+    },
+    {
+      "communication_time": 4.2608672122559765,
+      "max_edge_load": 4.5708549887401615,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.2608672122559765,
+      "request_time_variance": 0.44285307055103384
+    },
+    {
+      "communication_time": 4.195167221938139,
+      "max_edge_load": 4.428811603180848,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.195167221938139,
+      "request_time_variance": 0.3284801934488919
+    },
+    {
+      "communication_time": 4.1860628355899125,
+      "max_edge_load": 4.448081517692231,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.1860628355899125,
+      "request_time_variance": 0.36360381894110083
+    },
+    {
+      "communication_time": 4.1164734686980795,
+      "max_edge_load": 4.86497150441716,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.1164734686980795,
+      "request_time_variance": 0.3951286633830181
+    },
+    {
+      "communication_time": 4.2988404069618635,
+      "max_edge_load": 4.614375616934775,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.2988404069618635,
+      "request_time_variance": 0.3529229234428783
+    },
+    {
+      "communication_time": 4.212330120603819,
+      "max_edge_load": 4.385223777333263,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.212330120603819,
+      "request_time_variance": 0.37005211660097553
+    },
+    {
+      "communication_time": 4.121089773417462,
+      "max_edge_load": 5.0078437309248285,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.121089773417462,
+      "request_time_variance": 0.3323645344655097
+    },
+    {
+      "communication_time": 4.199603491582535,
+      "max_edge_load": 5.079989549941566,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.199603491582535,
+      "request_time_variance": 0.39621163408320986
+    },
+    {
+      "communication_time": 4.247244908229834,
+      "max_edge_load": 4.4742301654080165,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.247244908229834,
+      "request_time_variance": 0.5112097059533633
+    },
+    {
+      "communication_time": 4.157706488030282,
+      "max_edge_load": 5.320964092054168,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.157706488030282,
+      "request_time_variance": 0.5104709185220847
+    },
+    {
+      "communication_time": 4.185481416622486,
+      "max_edge_load": 4.470047594672488,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.185481416622486,
+      "request_time_variance": 0.38475208793865806
+    },
+    {
+      "communication_time": 4.193865336839749,
+      "max_edge_load": 4.3946630781552285,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.193865336839749,
+      "request_time_variance": 0.37034027350820636
+    },
+    {
+      "communication_time": 4.146772744736895,
+      "max_edge_load": 5.453432622984742,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.146772744736895,
+      "request_time_variance": 0.4516435457076543
+    },
+    {
+      "communication_time": 4.13006207671664,
+      "max_edge_load": 4.75098091190462,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.13006207671664,
+      "request_time_variance": 0.4893259637973828
+    },
+    {
+      "communication_time": 4.1743697643169755,
+      "max_edge_load": 4.807974218276508,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.1743697643169755,
+      "request_time_variance": 0.5214007687330597
+    },
+    {
+      "communication_time": 4.207860967590649,
+      "max_edge_load": 4.637441401744364,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.207860967590649,
+      "request_time_variance": 0.548849238178454
+    },
+    {
+      "communication_time": 4.290132331268077,
+      "max_edge_load": 4.435084596570577,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.290132331268077,
+      "request_time_variance": 0.5888180148933183
+    },
+    {
+      "communication_time": 4.260643772605544,
+      "max_edge_load": 5.336930459047537,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.260643772605544,
+      "request_time_variance": 0.4781446701123037
+    },
+    {
+      "communication_time": 4.248441203751421,
+      "max_edge_load": 4.109522966136133,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.248441203751421,
+      "request_time_variance": 0.5948889169932701
+    },
+    {
+      "communication_time": 4.198561199483144,
+      "max_edge_load": 4.53750601325396,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.198561199483144,
+      "request_time_variance": 0.6087799907761513
+    },
+    {
+      "communication_time": 4.127242020768513,
+      "max_edge_load": 4.829496582890643,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.127242020768513,
+      "request_time_variance": 0.4732512237665603
+    },
+    {
+      "communication_time": 4.183555103988881,
+      "max_edge_load": 4.637486589067003,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.183555103988881,
+      "request_time_variance": 0.5181237717548284
+    },
+    {
+      "communication_time": 4.16901723067046,
+      "max_edge_load": 4.6232300099977435,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.16901723067046,
+      "request_time_variance": 0.3935191172569086
+    },
+    {
+      "communication_time": 4.165846205290114,
+      "max_edge_load": 4.550423590352287,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.165846205290114,
+      "request_time_variance": 0.4068756455341389
+    },
+    {
+      "communication_time": 4.117230927264905,
+      "max_edge_load": 4.596656563118818,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.117230927264905,
+      "request_time_variance": 0.5256531399496785
+    },
+    {
+      "communication_time": 4.288632985051977,
+      "max_edge_load": 5.568131996089574,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.288632985051977,
+      "request_time_variance": 0.4309952022649532
+    },
+    {
+      "communication_time": 4.20042372103008,
+      "max_edge_load": 5.532272155885856,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.20042372103008,
+      "request_time_variance": 0.47145330736298446
+    },
+    {
+      "communication_time": 4.076328284099339,
+      "max_edge_load": 4.9287029860097515,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.076328284099339,
+      "request_time_variance": 0.5076524914877332
+    },
+    {
+      "communication_time": 4.164774799001798,
+      "max_edge_load": 4.54577536295823,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.164774799001798,
+      "request_time_variance": 0.6766794613784021
+    },
+    {
+      "communication_time": 4.167709648528698,
+      "max_edge_load": 5.053905131527194,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.167709648528698,
+      "request_time_variance": 0.4851056083494671
+    },
+    {
+      "communication_time": 4.223760299402601,
+      "max_edge_load": 4.993890408677535,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.223760299402601,
+      "request_time_variance": 0.6819892992761543
+    },
+    {
+      "communication_time": 4.047944301432308,
+      "max_edge_load": 5.706629339842621,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.047944301432308,
+      "request_time_variance": 0.570476727925118
+    },
+    {
+      "communication_time": 4.084724264451678,
+      "max_edge_load": 4.556879238302092,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.084724264451678,
+      "request_time_variance": 0.47559658800914895
+    },
+    {
+      "communication_time": 4.13119006351286,
+      "max_edge_load": 4.750527523054439,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.13119006351286,
+      "request_time_variance": 0.5579198263509403
+    },
+    {
+      "communication_time": 4.062830406777433,
+      "max_edge_load": 5.211521797616393,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.062830406777433,
+      "request_time_variance": 0.5394130137475874
+    },
+    {
+      "communication_time": 4.116353224437004,
+      "max_edge_load": 5.6866964833970215,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.116353224437004,
+      "request_time_variance": 0.5542146470887825
+    },
+    {
+      "communication_time": 4.111535641929627,
+      "max_edge_load": 5.25785720807505,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.111535641929627,
+      "request_time_variance": 0.6829261111620248
+    },
+    {
+      "communication_time": 4.170575186880449,
+      "max_edge_load": 4.890382630579943,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.170575186880449,
+      "request_time_variance": 0.7077131477542402
+    },
+    {
+      "communication_time": 4.069071201973432,
+      "max_edge_load": 5.190426114322135,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.069071201973432,
+      "request_time_variance": 0.6089214144937087
+    },
+    {
+      "communication_time": 4.16474267034277,
+      "max_edge_load": 5.250299869618296,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.16474267034277,
+      "request_time_variance": 0.5965473005564559
+    },
+    {
+      "communication_time": 4.172909499854912,
+      "max_edge_load": 4.883656711194227,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.172909499854912,
+      "request_time_variance": 0.5179135475167126
+    },
+    {
+      "communication_time": 4.135696243495134,
+      "max_edge_load": 4.616782152256149,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.135696243495134,
+      "request_time_variance": 0.6020453187795407
+    },
+    {
+      "communication_time": 4.121314258424758,
+      "max_edge_load": 4.420476076793291,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.121314258424758,
+      "request_time_variance": 0.506017383767393
+    },
+    {
+      "communication_time": 4.1541962384292095,
+      "max_edge_load": 4.469514818642999,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.1541962384292095,
+      "request_time_variance": 0.5979323382165388
+    },
+    {
+      "communication_time": 4.093717072990416,
+      "max_edge_load": 5.163495974781075,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.093717072990416,
+      "request_time_variance": 0.5753627376632439
+    },
+    {
+      "communication_time": 4.109508508020297,
+      "max_edge_load": 4.81851338594909,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.109508508020297,
+      "request_time_variance": 0.47622293887338885
+    },
+    {
+      "communication_time": 4.1028596042780565,
+      "max_edge_load": 4.727188738689449,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.1028596042780565,
+      "request_time_variance": 0.554520470853541
+    },
+    {
+      "communication_time": 4.1764087578309335,
+      "max_edge_load": 5.289940409904459,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.1764087578309335,
+      "request_time_variance": 0.6339921746544975
+    },
+    {
+      "communication_time": 4.144092607384448,
+      "max_edge_load": 4.371715837690248,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.144092607384448,
+      "request_time_variance": 0.5297041923648746
+    },
+    {
+      "communication_time": 4.140095382203548,
+      "max_edge_load": 4.3270634422242225,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.140095382203548,
+      "request_time_variance": 0.45559614807490334
+    },
+    {
+      "communication_time": 4.108894211903981,
+      "max_edge_load": 5.030542983713758,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.108894211903981,
+      "request_time_variance": 0.5011503303164583
+    },
+    {
+      "communication_time": 4.159310797114778,
+      "max_edge_load": 5.490052322861206,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.159310797114778,
+      "request_time_variance": 0.5371117278639426
+    },
+    {
+      "communication_time": 4.15900853293363,
+      "max_edge_load": 4.529061946743917,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.15900853293363,
+      "request_time_variance": 0.46665957834302424
+    },
+    {
+      "communication_time": 4.194824569223654,
+      "max_edge_load": 4.878720090594821,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.194824569223654,
+      "request_time_variance": 0.4413907266876109
+    },
+    {
+      "communication_time": 4.208577639065818,
+      "max_edge_load": 5.095596002324875,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.208577639065818,
+      "request_time_variance": 0.3847577817128052
+    },
+    {
+      "communication_time": 4.328641430268331,
+      "max_edge_load": 5.601394228546238,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.328641430268331,
+      "request_time_variance": 0.3755122575832807
+    },
+    {
+      "communication_time": 4.190055099656493,
+      "max_edge_load": 4.757137567854487,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.190055099656493,
+      "request_time_variance": 0.40352254764728496
+    },
+    {
+      "communication_time": 4.295004636527524,
+      "max_edge_load": 5.053864589196543,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.295004636527524,
+      "request_time_variance": 0.3714196226732473
+    },
+    {
+      "communication_time": 4.363133925766552,
+      "max_edge_load": 4.428555554451526,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.363133925766552,
+      "request_time_variance": 0.44876120713552786
+    },
+    {
+      "communication_time": 4.2265623540949635,
+      "max_edge_load": 4.889996905712662,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.2265623540949635,
+      "request_time_variance": 0.4643351239275074
+    },
+    {
+      "communication_time": 4.3027271927220525,
+      "max_edge_load": 4.268876404869922,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.3027271927220525,
+      "request_time_variance": 0.4371247598475742
+    },
+    {
+      "communication_time": 4.167206514767937,
+      "max_edge_load": 4.917903900579791,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.167206514767937,
+      "request_time_variance": 0.41415589299463995
+    },
+    {
+      "communication_time": 4.26063550376487,
+      "max_edge_load": 4.418216002026467,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.26063550376487,
+      "request_time_variance": 0.44499800180294136
+    },
+    {
+      "communication_time": 4.23345884783608,
+      "max_edge_load": 5.136238214486763,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.23345884783608,
+      "request_time_variance": 0.48685809988987405
+    },
+    {
+      "communication_time": 4.285204064964646,
+      "max_edge_load": 4.406568415274749,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.285204064964646,
+      "request_time_variance": 0.478550778707773
+    },
+    {
+      "communication_time": 4.314370200051776,
+      "max_edge_load": 4.90441903153495,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.314370200051776,
+      "request_time_variance": 0.5294196823502424
+    },
+    {
+      "communication_time": 4.352959837127529,
+      "max_edge_load": 5.1424953359689765,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.352959837127529,
+      "request_time_variance": 0.5603010022640392
+    },
+    {
+      "communication_time": 4.261958998714856,
+      "max_edge_load": 5.12586134278199,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.261958998714856,
+      "request_time_variance": 0.5268607749594016
+    },
+    {
+      "communication_time": 4.1941931502210785,
+      "max_edge_load": 5.127473233284134,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.1941931502210785,
+      "request_time_variance": 0.365258810321623
+    },
+    {
+      "communication_time": 4.227408161862588,
+      "max_edge_load": 5.088041680997859,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.227408161862588,
+      "request_time_variance": 0.6266342377046283
+    },
+    {
+      "communication_time": 4.107575203496899,
+      "max_edge_load": 5.070454766312472,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.107575203496899,
+      "request_time_variance": 0.42490613256770443
+    },
+    {
+      "communication_time": 4.249470043687844,
+      "max_edge_load": 5.126391869046443,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.249470043687844,
+      "request_time_variance": 0.509324539870179
+    },
+    {
+      "communication_time": 4.0697156290613625,
+      "max_edge_load": 5.05819124235969,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.0697156290613625,
+      "request_time_variance": 0.6089851123519191
+    },
+    {
+      "communication_time": 4.08703558864879,
+      "max_edge_load": 5.252951708809143,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.08703558864879,
+      "request_time_variance": 0.5819229004058929
+    },
+    {
+      "communication_time": 4.124919021494889,
+      "max_edge_load": 5.073775706997811,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.124919021494889,
+      "request_time_variance": 0.42363097932440325
+    },
+    {
+      "communication_time": 4.1175587299849035,
+      "max_edge_load": 5.0149198318285295,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.1175587299849035,
+      "request_time_variance": 0.598037901400756
+    },
+    {
+      "communication_time": 4.133555683284275,
+      "max_edge_load": 5.176414330148992,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.133555683284275,
+      "request_time_variance": 0.5977905865548611
+    },
+    {
+      "communication_time": 4.116646187340061,
+      "max_edge_load": 5.037561819712252,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.116646187340061,
+      "request_time_variance": 0.5177785359289888
+    },
+    {
+      "communication_time": 4.163002372596093,
+      "max_edge_load": 4.93759527633962,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.163002372596093,
+      "request_time_variance": 0.49170880778309045
+    },
+    {
+      "communication_time": 4.209902173186451,
+      "max_edge_load": 5.22090919311298,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.209902173186451,
+      "request_time_variance": 0.5843810346236089
+    },
+    {
+      "communication_time": 4.061567764112057,
+      "max_edge_load": 4.676150012938768,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.061567764112057,
+      "request_time_variance": 0.6182374199519727
+    },
+    {
+      "communication_time": 4.12204182973616,
+      "max_edge_load": 4.6571530314548975,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.12204182973616,
+      "request_time_variance": 0.5025521476471662
+    },
+    {
+      "communication_time": 4.132973883082518,
+      "max_edge_load": 4.960525058120931,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.132973883082518,
+      "request_time_variance": 0.6100969982293409
+    },
+    {
+      "communication_time": 4.054728712811684,
+      "max_edge_load": 5.078730027898822,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.054728712811684,
+      "request_time_variance": 0.5206863319550789
+    },
+    {
+      "communication_time": 3.9839894939210208,
+      "max_edge_load": 4.835273544843041,
+      "disconnected_flows": 0,
+      "request_time_mean": 3.9839894939210208,
+      "request_time_variance": 0.49059162139677254
+    },
+    {
+      "communication_time": 4.098845909027209,
+      "max_edge_load": 4.850960121699496,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.098845909027209,
+      "request_time_variance": 0.5037123291491109
+    },
+    {
+      "communication_time": 4.047653964275129,
+      "max_edge_load": 4.937290077282895,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.047653964275129,
+      "request_time_variance": 0.4953032575551199
+    },
+    {
+      "communication_time": 4.092156136408461,
+      "max_edge_load": 4.86569427143031,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.092156136408461,
+      "request_time_variance": 0.5115000900692281
+    },
+    {
+      "communication_time": 4.011502626919276,
+      "max_edge_load": 4.6082898320395405,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.011502626919276,
+      "request_time_variance": 0.4106136655642701
+    },
+    {
+      "communication_time": 4.052417342543449,
+      "max_edge_load": 4.9045204785363605,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.052417342543449,
+      "request_time_variance": 0.5117971367769366
+    },
+    {
+      "communication_time": 4.06704270022927,
+      "max_edge_load": 4.229434428793064,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.06704270022927,
+      "request_time_variance": 0.4798109639150581
+    },
+    {
+      "communication_time": 4.08705523821338,
+      "max_edge_load": 4.931224209063926,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.08705523821338,
+      "request_time_variance": 0.507398489974399
+    },
+    {
+      "communication_time": 4.083597336615438,
+      "max_edge_load": 4.622637577628472,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.083597336615438,
+      "request_time_variance": 0.49656629040804967
+    },
+    {
+      "communication_time": 4.117943881500517,
+      "max_edge_load": 4.122544608758549,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.117943881500517,
+      "request_time_variance": 0.5401553776405804
+    },
+    {
+      "communication_time": 4.169660189127414,
+      "max_edge_load": 4.7101439271276675,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.169660189127414,
+      "request_time_variance": 0.34978837365275656
+    },
+    {
+      "communication_time": 4.01286640073396,
+      "max_edge_load": 5.256455771725751,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.01286640073396,
+      "request_time_variance": 0.4334343511743545
+    },
+    {
+      "communication_time": 4.012108515638285,
+      "max_edge_load": 5.2401437675525315,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.012108515638285,
+      "request_time_variance": 0.48628599100935976
+    },
+    {
+      "communication_time": 4.12490853601682,
+      "max_edge_load": 5.435274771824551,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.12490853601682,
+      "request_time_variance": 0.4407585029218983
+    },
+    {
+      "communication_time": 4.076041767435703,
+      "max_edge_load": 5.2338720768136495,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.076041767435703,
+      "request_time_variance": 0.42185023239782404
+    },
+    {
+      "communication_time": 4.072448691136667,
+      "max_edge_load": 5.077792000418473,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.072448691136667,
+      "request_time_variance": 0.4392233461690335
+    },
+    {
+      "communication_time": 4.152532153693274,
+      "max_edge_load": 5.288288140946131,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.152532153693274,
+      "request_time_variance": 0.4446028571997828
+    },
+    {
+      "communication_time": 4.064796459938251,
+      "max_edge_load": 5.04106902509835,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.064796459938251,
+      "request_time_variance": 0.48256287894188954
+    },
+    {
+      "communication_time": 4.175290725535161,
+      "max_edge_load": 4.94912710262758,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.175290725535161,
+      "request_time_variance": 0.5317529111074294
+    },
+    {
+      "communication_time": 4.076084906565164,
+      "max_edge_load": 5.134460512593048,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.076084906565164,
+      "request_time_variance": 0.4641228785741894
+    },
+    {
+      "communication_time": 4.2009205300355745,
+      "max_edge_load": 5.234253271233338,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.2009205300355745,
+      "request_time_variance": 0.35054961079049324
+    },
+    {
+      "communication_time": 4.151453648357452,
+      "max_edge_load": 4.788587846228778,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.151453648357452,
+      "request_time_variance": 0.5298776603140725
+    },
+    {
+      "communication_time": 4.05885853780605,
+      "max_edge_load": 5.1140969812400705,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.05885853780605,
+      "request_time_variance": 0.3834535970476279
+    },
+    {
+      "communication_time": 4.020602695646731,
+      "max_edge_load": 4.694581873570231,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.020602695646731,
+      "request_time_variance": 0.3950816975166187
+    },
+    {
+      "communication_time": 4.047847729745105,
+      "max_edge_load": 4.6616379513018,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.047847729745105,
+      "request_time_variance": 0.5502281999991885
+    },
+    {
+      "communication_time": 4.166754919416052,
+      "max_edge_load": 4.452498250523307,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.166754919416052,
+      "request_time_variance": 0.49155898346275023
+    },
+    {
+      "communication_time": 4.118393130451992,
+      "max_edge_load": 4.424235489344106,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.118393130451992,
+      "request_time_variance": 0.3521850599276002
+    },
+    {
+      "communication_time": 4.133425793475609,
+      "max_edge_load": 4.308983941586079,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.133425793475609,
+      "request_time_variance": 0.420363570625553
+    },
+    {
+      "communication_time": 4.058222947460407,
+      "max_edge_load": 4.2584879248042835,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.058222947460407,
+      "request_time_variance": 0.43872208106927574
+    },
+    {
+      "communication_time": 4.0972013646725625,
+      "max_edge_load": 4.336712245827921,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.0972013646725625,
+      "request_time_variance": 0.5078155299055157
+    },
+    {
+      "communication_time": 4.027259367633332,
+      "max_edge_load": 4.654425149221116,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.027259367633332,
+      "request_time_variance": 0.3734215559558145
+    },
+    {
+      "communication_time": 4.123605823201395,
+      "max_edge_load": 4.360732916281564,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.123605823201395,
+      "request_time_variance": 0.3668168624985522
+    },
+    {
+      "communication_time": 4.125103878715379,
+      "max_edge_load": 4.4362388324488515,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.125103878715379,
+      "request_time_variance": 0.43492262106474827
+    },
+    {
+      "communication_time": 4.016344155810212,
+      "max_edge_load": 4.750960668747852,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.016344155810212,
+      "request_time_variance": 0.4166242188975454
+    },
+    {
+      "communication_time": 4.108782550604715,
+      "max_edge_load": 4.5347938648524275,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.108782550604715,
+      "request_time_variance": 0.4021675793725936
+    },
+    {
+      "communication_time": 4.120558427512049,
+      "max_edge_load": 5.161799841418886,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.120558427512049,
+      "request_time_variance": 0.43084444883611117
+    },
+    {
+      "communication_time": 4.148925684928685,
+      "max_edge_load": 4.8248571261712865,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.148925684928685,
+      "request_time_variance": 0.47139364479378687
+    },
+    {
+      "communication_time": 4.118813975539274,
+      "max_edge_load": 4.961921309249201,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.118813975539274,
+      "request_time_variance": 0.45533429806135156
+    },
+    {
+      "communication_time": 4.075595249384435,
+      "max_edge_load": 4.342984317728194,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.075595249384435,
+      "request_time_variance": 0.3992166997885792
+    },
+    {
+      "communication_time": 4.058014932002382,
+      "max_edge_load": 4.454055788510977,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.058014932002382,
+      "request_time_variance": 0.4222652871085678
+    },
+    {
+      "communication_time": 4.124688055415774,
+      "max_edge_load": 4.387210104543509,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.124688055415774,
+      "request_time_variance": 0.45618106835408645
+    },
+    {
+      "communication_time": 4.062719753924262,
+      "max_edge_load": 4.933832897142446,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.062719753924262,
+      "request_time_variance": 0.35821942324280726
+    },
+    {
+      "communication_time": 4.089231935868487,
+      "max_edge_load": 4.324022956440775,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.089231935868487,
+      "request_time_variance": 0.4706918194170407
+    },
+    {
+      "communication_time": 4.13893842850022,
+      "max_edge_load": 4.662330544916352,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.13893842850022,
+      "request_time_variance": 0.5007876295704174
+    },
+    {
+      "communication_time": 4.181612829161116,
+      "max_edge_load": 5.06025204201228,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.181612829161116,
+      "request_time_variance": 0.4496018907653324
+    },
+    {
+      "communication_time": 4.074502610789984,
+      "max_edge_load": 4.119655701381454,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.074502610789984,
+      "request_time_variance": 0.5044825463593865
+    },
+    {
+      "communication_time": 4.105587840117178,
+      "max_edge_load": 4.046390348065604,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.105587840117178,
+      "request_time_variance": 0.4932544048482187
+    },
+    {
+      "communication_time": 4.091301343258992,
+      "max_edge_load": 4.280272924842017,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.091301343258992,
+      "request_time_variance": 0.4581399630485407
+    },
+    {
+      "communication_time": 4.066237048376735,
+      "max_edge_load": 5.023569414857894,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.066237048376735,
+      "request_time_variance": 0.5654951589399398
+    },
+    {
+      "communication_time": 4.202779227102494,
+      "max_edge_load": 4.567606465104097,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.202779227102494,
+      "request_time_variance": 0.519196828927222
+    },
+    {
+      "communication_time": 4.18503321405082,
+      "max_edge_load": 4.924086719081055,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.18503321405082,
+      "request_time_variance": 0.4193132301240333
+    },
+    {
+      "communication_time": 4.173512852607022,
+      "max_edge_load": 4.934311084202042,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.173512852607022,
+      "request_time_variance": 0.6263750002359042
+    },
+    {
+      "communication_time": 4.136463012175323,
+      "max_edge_load": 5.0875873005718875,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.136463012175323,
+      "request_time_variance": 0.498373624651665
+    },
+    {
+      "communication_time": 4.094993347227319,
+      "max_edge_load": 4.781713721405306,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.094993347227319,
+      "request_time_variance": 0.6621930840079236
+    },
+    {
+      "communication_time": 4.069879496969455,
+      "max_edge_load": 4.604216125721177,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.069879496969455,
+      "request_time_variance": 0.7390713056531383
+    },
+    {
+      "communication_time": 4.135393836733711,
+      "max_edge_load": 4.809879901044292,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.135393836733711,
+      "request_time_variance": 0.6066785259117761
+    },
+    {
+      "communication_time": 4.213164122984795,
+      "max_edge_load": 4.828053207072236,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.213164122984795,
+      "request_time_variance": 0.7037585624923577
+    },
+    {
+      "communication_time": 4.118109296582764,
+      "max_edge_load": 4.348469398915347,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.118109296582764,
+      "request_time_variance": 0.6709498462089006
+    },
+    {
+      "communication_time": 4.21673665342785,
+      "max_edge_load": 4.875933910836924,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.21673665342785,
+      "request_time_variance": 0.6933402240799849
+    },
+    {
+      "communication_time": 4.145485513601547,
+      "max_edge_load": 4.74224897442185,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.145485513601547,
+      "request_time_variance": 0.7824171174330777
+    },
+    {
+      "communication_time": 4.155301321114141,
+      "max_edge_load": 4.476262218723089,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.155301321114141,
+      "request_time_variance": 0.6624995492217581
+    },
+    {
+      "communication_time": 4.21188422498208,
+      "max_edge_load": 4.609414074739478,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.21188422498208,
+      "request_time_variance": 0.6610231739753031
+    },
+    {
+      "communication_time": 4.093198252433565,
+      "max_edge_load": 4.377815773050385,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.093198252433565,
+      "request_time_variance": 0.5522256772642317
+    },
+    {
+      "communication_time": 4.1496283264625795,
+      "max_edge_load": 4.553387484437212,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.1496283264625795,
+      "request_time_variance": 0.6440623990858294
+    },
+    {
+      "communication_time": 4.102182247713486,
+      "max_edge_load": 4.892319731826878,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.102182247713486,
+      "request_time_variance": 0.5689297613543027
+    },
+    {
+      "communication_time": 4.099655095863465,
+      "max_edge_load": 5.589402624713636,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.099655095863465,
+      "request_time_variance": 0.4990026847673873
+    },
+    {
+      "communication_time": 4.063599911587293,
+      "max_edge_load": 4.858696279250698,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.063599911587293,
+      "request_time_variance": 0.7994802647668474
+    },
+    {
+      "communication_time": 4.158866061590265,
+      "max_edge_load": 4.869375503326141,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.158866061590265,
+      "request_time_variance": 0.5600761479032563
+    },
+    {
+      "communication_time": 4.152040136074138,
+      "max_edge_load": 4.81954913044569,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.152040136074138,
+      "request_time_variance": 0.5926508414777079
+    },
+    {
+      "communication_time": 4.078671909722649,
+      "max_edge_load": 4.733235608291311,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.078671909722649,
+      "request_time_variance": 0.8405584080391275
+    },
+    {
+      "communication_time": 4.141041105906031,
+      "max_edge_load": 4.843649665503526,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.141041105906031,
+      "request_time_variance": 0.7177820813974716
+    },
+    {
+      "communication_time": 4.050777913832489,
+      "max_edge_load": 4.672396699079149,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.050777913832489,
+      "request_time_variance": 0.8079718809354575
+    },
+    {
+      "communication_time": 4.047002676900188,
+      "max_edge_load": 4.651711193898674,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.047002676900188,
+      "request_time_variance": 0.8514036922270769
+    },
+    {
+      "communication_time": 4.117429553993529,
+      "max_edge_load": 5.210055004410708,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.117429553993529,
+      "request_time_variance": 0.8569799077987759
+    },
+    {
+      "communication_time": 4.10659408885731,
+      "max_edge_load": 4.530292370349644,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.10659408885731,
+      "request_time_variance": 0.8831544636025697
+    },
+    {
+      "communication_time": 4.0289652398152,
+      "max_edge_load": 4.596929980148899,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.0289652398152,
+      "request_time_variance": 0.809653558524797
+    },
+    {
+      "communication_time": 4.059337543932082,
+      "max_edge_load": 4.667120861676965,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.059337543932082,
+      "request_time_variance": 0.830797361291536
+    },
+    {
+      "communication_time": 4.193947418188664,
+      "max_edge_load": 4.600386446197282,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.193947418188664,
+      "request_time_variance": 0.6352905149333538
+    },
+    {
+      "communication_time": 4.143532854240368,
+      "max_edge_load": 4.71551644147105,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.143532854240368,
+      "request_time_variance": 0.7559414045764675
+    },
+    {
+      "communication_time": 4.073140815299038,
+      "max_edge_load": 4.716441298808326,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.073140815299038,
+      "request_time_variance": 0.7846104749378227
+    },
+    {
+      "communication_time": 4.083438726546529,
+      "max_edge_load": 4.505978829209277,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.083438726546529,
+      "request_time_variance": 0.7358295895000053
+    },
+    {
+      "communication_time": 4.109020353836186,
+      "max_edge_load": 4.666575675006074,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.109020353836186,
+      "request_time_variance": 0.5485682099198159
+    },
+    {
+      "communication_time": 4.104648226274294,
+      "max_edge_load": 4.4911991008935415,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.104648226274294,
+      "request_time_variance": 0.7411025312987851
+    },
+    {
+      "communication_time": 4.133381093162511,
+      "max_edge_load": 4.659517280094302,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.133381093162511,
+      "request_time_variance": 0.7984277904064514
+    },
+    {
+      "communication_time": 4.083496013177131,
+      "max_edge_load": 4.960698939329914,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.083496013177131,
+      "request_time_variance": 0.6269605139052682
+    },
+    {
+      "communication_time": 4.202821661395292,
+      "max_edge_load": 4.86364384955954,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.202821661395292,
+      "request_time_variance": 0.732705612530996
+    },
+    {
+      "communication_time": 4.138413212140113,
+      "max_edge_load": 4.448797258140816,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.138413212140113,
+      "request_time_variance": 0.6426749605015105
+    },
+    {
+      "communication_time": 4.193238268842795,
+      "max_edge_load": 4.507039000870355,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.193238268842795,
+      "request_time_variance": 0.5014090946635127
+    },
+    {
+      "communication_time": 4.155247214908614,
+      "max_edge_load": 4.869524458505107,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.155247214908614,
+      "request_time_variance": 0.5899332424935609
+    },
+    {
+      "communication_time": 4.177180960529376,
+      "max_edge_load": 4.588202214200807,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.177180960529376,
+      "request_time_variance": 0.6228990175412177
+    },
+    {
+      "communication_time": 4.223114596176034,
+      "max_edge_load": 4.943567587726499,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.223114596176034,
+      "request_time_variance": 0.42417359586424697
+    },
+    {
+      "communication_time": 4.182083217331477,
+      "max_edge_load": 4.691885289897855,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.182083217331477,
+      "request_time_variance": 0.686548439646418
+    },
+    {
+      "communication_time": 4.212473120204812,
+      "max_edge_load": 4.5330271478187,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.212473120204812,
+      "request_time_variance": 0.5368415551799273
+    },
+    {
+      "communication_time": 4.184936591993744,
+      "max_edge_load": 4.744488116820193,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.184936591993744,
+      "request_time_variance": 0.5026973740293764
+    },
+    {
+      "communication_time": 4.109980980964014,
+      "max_edge_load": 4.525502156745567,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.109980980964014,
+      "request_time_variance": 0.5227501948820159
+    },
+    {
+      "communication_time": 4.209580650242633,
+      "max_edge_load": 4.67611503268469,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.209580650242633,
+      "request_time_variance": 0.6746848800998652
+    },
+    {
+      "communication_time": 4.188745275966995,
+      "max_edge_load": 4.617765667959573,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.188745275966995,
+      "request_time_variance": 0.5703620456335554
+    },
+    {
+      "communication_time": 4.166677733806642,
+      "max_edge_load": 4.495839581743034,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.166677733806642,
+      "request_time_variance": 0.38525683569138974
+    },
+    {
+      "communication_time": 4.164954147716544,
+      "max_edge_load": 4.85352534420197,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.164954147716544,
+      "request_time_variance": 0.595003387428127
+    },
+    {
+      "communication_time": 4.222451748571466,
+      "max_edge_load": 4.539179215593098,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.222451748571466,
+      "request_time_variance": 0.5554844121272672
+    },
+    {
+      "communication_time": 4.241386503123358,
+      "max_edge_load": 4.926160002322856,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.241386503123358,
+      "request_time_variance": 0.6671016559288258
+    },
+    {
+      "communication_time": 4.213938865256259,
+      "max_edge_load": 4.866099886858394,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.213938865256259,
+      "request_time_variance": 0.5876391380315391
+    },
+    {
+      "communication_time": 4.149667609879022,
+      "max_edge_load": 4.738659006027106,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.149667609879022,
+      "request_time_variance": 0.6123580943819065
+    },
+    {
+      "communication_time": 4.170631036439498,
+      "max_edge_load": 4.37813998671516,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.170631036439498,
+      "request_time_variance": 0.46616029937958847
+    },
+    {
+      "communication_time": 4.234133383291699,
+      "max_edge_load": 4.937574537459841,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.234133383291699,
+      "request_time_variance": 0.5535787773264276
+    },
+    {
+      "communication_time": 4.264943243145566,
+      "max_edge_load": 4.562237466324516,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.264943243145566,
+      "request_time_variance": 0.5542532429223324
+    },
+    {
+      "communication_time": 4.145212872659143,
+      "max_edge_load": 4.771066109486886,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.145212872659143,
+      "request_time_variance": 0.526468579661634
+    },
+    {
+      "communication_time": 4.153426528943106,
+      "max_edge_load": 4.806301676848735,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.153426528943106,
+      "request_time_variance": 0.6885266304684635
+    },
+    {
+      "communication_time": 4.128638805410921,
+      "max_edge_load": 4.835341515488592,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.128638805410921,
+      "request_time_variance": 0.47383941541824987
+    },
+    {
+      "communication_time": 4.173214586649148,
+      "max_edge_load": 5.075907305788992,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.173214586649148,
+      "request_time_variance": 0.44745559549131175
+    },
+    {
+      "communication_time": 4.1500405361369195,
+      "max_edge_load": 5.538445517172573,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.1500405361369195,
+      "request_time_variance": 0.554227683037057
+    },
+    {
+      "communication_time": 4.155751032911318,
+      "max_edge_load": 4.865884638231988,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.155751032911318,
+      "request_time_variance": 0.5521690680917559
+    },
+    {
+      "communication_time": 4.1215753816139555,
+      "max_edge_load": 5.119926559193713,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.1215753816139555,
+      "request_time_variance": 0.6352152924977449
+    },
+    {
+      "communication_time": 4.09495179469058,
+      "max_edge_load": 5.029404685135552,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.09495179469058,
+      "request_time_variance": 0.4753323102325992
+    },
+    {
+      "communication_time": 4.122722602287319,
+      "max_edge_load": 4.816180843816765,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.122722602287319,
+      "request_time_variance": 0.4532649937518034
+    },
+    {
+      "communication_time": 4.161416653966771,
+      "max_edge_load": 4.718732908887748,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.161416653966771,
+      "request_time_variance": 0.5264898330866656
+    },
+    {
+      "communication_time": 4.124328401023441,
+      "max_edge_load": 5.011902070470336,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.124328401023441,
+      "request_time_variance": 0.45779653115773455
+    },
+    {
+      "communication_time": 4.174550453167493,
+      "max_edge_load": 5.092803473689388,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.174550453167493,
+      "request_time_variance": 0.6797367702824586
+    },
+    {
+      "communication_time": 4.183328867600721,
+      "max_edge_load": 4.957401729527762,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.183328867600721,
+      "request_time_variance": 0.37443341056617807
+    },
+    {
+      "communication_time": 4.146674826019812,
+      "max_edge_load": 4.441814214782513,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.146674826019812,
+      "request_time_variance": 0.4044381324807456
+    },
+    {
+      "communication_time": 4.213011766113049,
+      "max_edge_load": 4.522537623046193,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.213011766113049,
+      "request_time_variance": 0.39072468070455096
+    },
+    {
+      "communication_time": 4.168867353817012,
+      "max_edge_load": 4.391153573665859,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.168867353817012,
+      "request_time_variance": 0.43348109139091423
+    },
+    {
+      "communication_time": 4.126225480060391,
+      "max_edge_load": 4.3497440992867435,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.126225480060391,
+      "request_time_variance": 0.4075157011401498
+    },
+    {
+      "communication_time": 4.172780143097374,
+      "max_edge_load": 4.446600885474222,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.172780143097374,
+      "request_time_variance": 0.39536580715845826
+    },
+    {
+      "communication_time": 4.100865887487092,
+      "max_edge_load": 4.288241354653533,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.100865887487092,
+      "request_time_variance": 0.46093209676419095
+    },
+    {
+      "communication_time": 4.13635114800539,
+      "max_edge_load": 4.275231630868224,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.13635114800539,
+      "request_time_variance": 0.39470969740582545
+    },
+    {
+      "communication_time": 4.1771196187415995,
+      "max_edge_load": 4.367459651599543,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.1771196187415995,
+      "request_time_variance": 0.3879964832644101
+    },
+    {
+      "communication_time": 4.174750919202143,
+      "max_edge_load": 4.571276034507889,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.174750919202143,
+      "request_time_variance": 0.31880859693111907
+    },
+    {
+      "communication_time": 4.142087808166925,
+      "max_edge_load": 4.480022624228898,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.142087808166925,
+      "request_time_variance": 0.40038856310278925
+    },
+    {
+      "communication_time": 4.0837162860582445,
+      "max_edge_load": 4.902641661519434,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.0837162860582445,
+      "request_time_variance": 0.44244813376131553
+    },
+    {
+      "communication_time": 4.13303483729138,
+      "max_edge_load": 4.938607491836735,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.13303483729138,
+      "request_time_variance": 0.42838121290291575
+    },
+    {
+      "communication_time": 4.08484024478662,
+      "max_edge_load": 4.639328987131547,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.08484024478662,
+      "request_time_variance": 0.29803703512986757
+    },
+    {
+      "communication_time": 4.048331108869634,
+      "max_edge_load": 4.834649537883626,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.048331108869634,
+      "request_time_variance": 0.4391189020039011
+    },
+    {
+      "communication_time": 4.087406892368383,
+      "max_edge_load": 5.35731034721989,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.087406892368383,
+      "request_time_variance": 0.4139431736528789
+    },
+    {
+      "communication_time": 4.122618473459756,
+      "max_edge_load": 5.316184541915015,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.122618473459756,
+      "request_time_variance": 0.4479604160505064
+    },
+    {
+      "communication_time": 4.086353604583281,
+      "max_edge_load": 4.7449161667290785,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.086353604583281,
+      "request_time_variance": 0.3711083252261183
+    },
+    {
+      "communication_time": 4.101474442807247,
+      "max_edge_load": 4.839840289426762,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.101474442807247,
+      "request_time_variance": 0.465941060868578
+    },
+    {
+      "communication_time": 4.077203702637957,
+      "max_edge_load": 4.920640578464883,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.077203702637957,
+      "request_time_variance": 0.5374219657021428
+    },
+    {
+      "communication_time": 4.142279922607857,
+      "max_edge_load": 4.947970572493779,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.142279922607857,
+      "request_time_variance": 0.3931063751774051
+    },
+    {
+      "communication_time": 4.1378301930463826,
+      "max_edge_load": 5.024191949576956,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.1378301930463826,
+      "request_time_variance": 0.4546720026842136
+    },
+    {
+      "communication_time": 4.092504283825209,
+      "max_edge_load": 5.479771766296256,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.092504283825209,
+      "request_time_variance": 0.4540963325720887
+    },
+    {
+      "communication_time": 4.076873793233473,
+      "max_edge_load": 5.503144557064503,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.076873793233473,
+      "request_time_variance": 0.4418720974050805
+    },
+    {
+      "communication_time": 4.189667167185172,
+      "max_edge_load": 4.884909509051397,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.189667167185172,
+      "request_time_variance": 0.36735569075607216
+    },
+    {
+      "communication_time": 4.121000267445614,
+      "max_edge_load": 5.136322642091636,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.121000267445614,
+      "request_time_variance": 0.4762252595351778
+    },
+    {
+      "communication_time": 4.284448616179763,
+      "max_edge_load": 5.562366507427884,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.284448616179763,
+      "request_time_variance": 0.855068370753295
+    },
+    {
+      "communication_time": 4.046862303986658,
+      "max_edge_load": 5.279905395890923,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.046862303986658,
+      "request_time_variance": 0.5015100671470891
+    },
+    {
+      "communication_time": 4.141057043864804,
+      "max_edge_load": 4.972929593878886,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.141057043864804,
+      "request_time_variance": 0.43792136535459036
+    },
+    {
+      "communication_time": 4.035170476034098,
+      "max_edge_load": 4.765261265991386,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.035170476034098,
+      "request_time_variance": 0.3880605227041257
+    },
+    {
+      "communication_time": 4.0701973082948815,
+      "max_edge_load": 5.464393384259922,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.0701973082948815,
+      "request_time_variance": 0.46537660113032775
+    },
+    {
+      "communication_time": 4.243017115224275,
+      "max_edge_load": 5.4595089941737625,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.243017115224275,
+      "request_time_variance": 0.49611132315184653
+    },
+    {
+      "communication_time": 4.085646858589198,
+      "max_edge_load": 4.6881349704312205,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.085646858589198,
+      "request_time_variance": 0.36447487687962266
+    },
+    {
+      "communication_time": 4.171586674095153,
+      "max_edge_load": 4.919710968838751,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.171586674095153,
+      "request_time_variance": 0.5524358155162539
+    },
+    {
+      "communication_time": 4.064565527703896,
+      "max_edge_load": 4.629449462804682,
+      "disconnected_flows": 0,
+      "request_time_mean": 4.064565527703896,
+      "request_time_variance": 0.6336095088405919
+    }
+  ],
+  "edges": [
+    [
+      0,
+      98
+    ],
+    [
+      0,
+      100
+    ],
+    [
+      0,
+      47
+    ],
+    [
+      0,
+      18
+    ],
+    [
+      0,
+      117
+    ],
+    [
+      0,
+      118
+    ],
+    [
+      0,
+      90
+    ],
+    [
+      0,
+      123
+    ],
+    [
+      0,
+      125
+    ],
+    [
+      0,
+      126
+    ],
+    [
+      1,
+      33
+    ],
+    [
+      1,
+      7
+    ],
+    [
+      1,
+      104
+    ],
+    [
+      1,
+      107
+    ],
+    [
+      1,
+      77
+    ],
+    [
+      1,
+      80
+    ],
+    [
+      1,
+      82
+    ],
+    [
+      1,
+      118
+    ],
+    [
+      1,
+      87
+    ],
+    [
+      1,
+      127
+    ],
+    [
+      2,
+      34
+    ],
+    [
+      2,
+      67
+    ],
+    [
+      2,
+      101
+    ],
+    [
+      2,
+      82
+    ],
+    [
+      2,
+      114
+    ],
+    [
+      2,
+      119
+    ],
+    [
+      2,
+      57
+    ],
+    [
+      2,
+      58
+    ],
+    [
+      2,
+      123
+    ],
+    [
+      2,
+      93
+    ],
+    [
+      3,
+      34
+    ],
+    [
+      3,
+      98
+    ],
+    [
+      3,
+      102
+    ],
+    [
+      3,
+      73
+    ],
+    [
+      3,
+      44
+    ],
+    [
+      3,
+      79
+    ],
+    [
+      3,
+      112
+    ],
+    [
+      3,
+      23
+    ],
+    [
+      3,
+      90
+    ],
+    [
+      3,
+      92
+    ],
+    [
+      4,
+      67
+    ],
+    [
+      4,
+      68
+    ],
+    [
+      4,
+      37
+    ],
+    [
+      4,
+      74
+    ],
+    [
+      4,
+      13
+    ],
+    [
+      4,
+      48
+    ],
+    [
+      4,
+      18
+    ],
+    [
+      4,
+      19
+    ],
+    [
+      4,
+      117
+    ],
+    [
+      4,
+      24
+    ],
+    [
+      5,
+      35
+    ],
+    [
+      5,
+      7
+    ],
+    [
+      5,
+      72
+    ],
+    [
+      5,
+      106
+    ],
+    [
+      5,
+      76
+    ],
+    [
+      5,
+      83
+    ],
+    [
+      5,
+      117
+    ],
+    [
+      5,
+      57
+    ],
+    [
+      5,
+      122
+    ],
+    [
+      5,
+      59
+    ],
+    [
+      6,
+      64
+    ],
+    [
+      6,
+      100
+    ],
+    [
+      6,
+      104
+    ],
+    [
+      6,
+      75
+    ],
+    [
+      6,
+      81
+    ],
+    [
+      6,
+      84
+    ],
+    [
+      6,
+      92
+    ],
+    [
+      6,
+      29
+    ],
+    [
+      6,
+      30
+    ],
+    [
+      6,
+      31
+    ],
+    [
+      7,
+      97
+    ],
+    [
+      7,
+      103
+    ],
+    [
+      7,
+      40
+    ],
+    [
+      7,
+      51
+    ],
+    [
+      7,
+      84
+    ],
+    [
+      7,
+      115
+    ],
+    [
+      7,
+      119
+    ],
+    [
+      7,
+      93
+    ],
+    [
+      8,
+      37
+    ],
+    [
+      8,
+      104
+    ],
+    [
+      8,
+      9
+    ],
+    [
+      8,
+      75
+    ],
+    [
+      8,
+      45
+    ],
+    [
+      8,
+      124
+    ],
+    [
+      8,
+      23
+    ],
+    [
+      8,
+      120
+    ],
+    [
+      8,
+      24
+    ],
+    [
+      8,
+      60
+    ],
+    [
+      9,
+      97
+    ],
+    [
+      9,
+      66
+    ],
+    [
+      9,
+      122
+    ],
+    [
+      9,
+      43
+    ],
+    [
+      9,
+      108
+    ],
+    [
+      9,
+      107
+    ],
+    [
+      9,
+      79
+    ],
+    [
+      9,
+      121
+    ],
+    [
+      9,
+      90
+    ],
+    [
+      10,
+      32
+    ],
+    [
+      10,
+      96
+    ],
+    [
+      10,
+      16
+    ],
+    [
+      10,
+      80
+    ],
+    [
+      10,
+      51
+    ],
+    [
+      10,
+      116
+    ],
+    [
+      10,
+      120
+    ],
+    [
+      10,
+      58
+    ],
+    [
+      10,
+      123
+    ],
+    [
+      10,
+      126
+    ],
+    [
+      11,
+      32
+    ],
+    [
+      11,
+      96
+    ],
+    [
+      11,
+      66
+    ],
+    [
+      11,
+      102
+    ],
+    [
+      11,
+      103
+    ],
+    [
+      11,
+      72
+    ],
+    [
+      11,
+      109
+    ],
+    [
+      11,
+      86
+    ],
+    [
+      11,
+      62
+    ],
+    [
+      11,
+      95
+    ],
+    [
+      12,
+      102
+    ],
+    [
+      12,
+      105
+    ],
+    [
+      12,
+      42
+    ],
+    [
+      12,
+      77
+    ],
+    [
+      12,
+      15
+    ],
+    [
+      12,
+      17
+    ],
+    [
+      12,
+      113
+    ],
+    [
+      12,
+      116
+    ],
+    [
+      12,
+      124
+    ],
+    [
+      12,
+      125
+    ],
+    [
+      13,
+      98
+    ],
+    [
+      13,
+      101
+    ],
+    [
+      13,
+      107
+    ],
+    [
+      13,
+      81
+    ],
+    [
+      13,
+      18
+    ],
+    [
+      13,
+      21
+    ],
+    [
+      13,
+      118
+    ],
+    [
+      13,
+      56
+    ],
+    [
+      13,
+      88
+    ],
+    [
+      14,
+      69
+    ],
+    [
+      14,
+      70
+    ],
+    [
+      14,
+      105
+    ],
+    [
+      14,
+      78
+    ],
+    [
+      14,
+      79
+    ],
+    [
+      14,
+      112
+    ],
+    [
+      14,
+      113
+    ],
+    [
+      14,
+      119
+    ],
+    [
+      14,
+      123
+    ],
+    [
+      14,
+      94
+    ],
+    [
+      15,
+      104
+    ],
+    [
+      15,
+      41
+    ],
+    [
+      15,
+      75
+    ],
+    [
+      15,
+      19
+    ],
+    [
+      15,
+      83
+    ],
+    [
+      15,
+      54
+    ],
+    [
+      15,
+      25
+    ],
+    [
+      15,
+      58
+    ],
+    [
+      15,
+      30
+    ],
+    [
+      16,
+      96
+    ],
+    [
+      16,
+      66
+    ],
+    [
+      16,
+      101
+    ],
+    [
+      16,
+      43
+    ],
+    [
+      16,
+      50
+    ],
+    [
+      16,
+      84
+    ],
+    [
+      16,
+      22
+    ],
+    [
+      16,
+      29
+    ],
+    [
+      16,
+      62
+    ],
+    [
+      17,
+      66
+    ],
+    [
+      17,
+      107
+    ],
+    [
+      17,
+      109
+    ],
+    [
+      17,
+      112
+    ],
+    [
+      17,
+      55
+    ],
+    [
+      17,
+      89
+    ],
+    [
+      17,
+      122
+    ],
+    [
+      17,
+      94
+    ],
+    [
+      17,
+      95
+    ],
+    [
+      18,
+      36
+    ],
+    [
+      18,
+      110
+    ],
+    [
+      18,
+      112
+    ],
+    [
+      18,
+      113
+    ],
+    [
+      18,
+      83
+    ],
+    [
+      18,
+      84
+    ],
+    [
+      18,
+      85
+    ],
+    [
+      19,
+      67
+    ],
+    [
+      19,
+      74
+    ],
+    [
+      19,
+      78
+    ],
+    [
+      19,
+      119
+    ],
+    [
+      19,
+      56
+    ],
+    [
+      19,
+      24
+    ],
+    [
+      19,
+      92
+    ],
+    [
+      19,
+      93
+    ],
+    [
+      20,
+      108
+    ],
+    [
+      20,
+      78
+    ],
+    [
+      20,
+      46
+    ],
+    [
+      20,
+      80
+    ],
+    [
+      20,
+      82
+    ],
+    [
+      20,
+      117
+    ],
+    [
+      20,
+      85
+    ],
+    [
+      20,
+      87
+    ],
+    [
+      20,
+      26
+    ],
+    [
+      20,
+      124
+    ],
+    [
+      21,
+      99
+    ],
+    [
+      21,
+      67
+    ],
+    [
+      21,
+      68
+    ],
+    [
+      21,
+      42
+    ],
+    [
+      21,
+      43
+    ],
+    [
+      21,
+      114
+    ],
+    [
+      21,
+      52
+    ],
+    [
+      21,
+      28
+    ],
+    [
+      21,
+      62
+    ],
+    [
+      22,
+      101
+    ],
+    [
+      22,
+      74
+    ],
+    [
+      22,
+      45
+    ],
+    [
+      22,
+      79
+    ],
+    [
+      22,
+      124
+    ],
+    [
+      22,
+      83
+    ],
+    [
+      22,
+      90
+    ],
+    [
+      22,
+      92
+    ],
+    [
+      22,
+      62
+    ],
+    [
+      23,
+      101
+    ],
+    [
+      23,
+      110
+    ],
+    [
+      23,
+      79
+    ],
+    [
+      23,
+      78
+    ],
+    [
+      23,
+      113
+    ],
+    [
+      23,
+      115
+    ],
+    [
+      23,
+      92
+    ],
+    [
+      23,
+      31
+    ],
+    [
+      24,
+      70
+    ],
+    [
+      24,
+      105
+    ],
+    [
+      24,
+      42
+    ],
+    [
+      24,
+      108
+    ],
+    [
+      24,
+      93
+    ],
+    [
+      24,
+      60
+    ],
+    [
+      24,
+      61
+    ],
+    [
+      25,
+      65
+    ],
+    [
+      25,
+      100
+    ],
+    [
+      25,
+      45
+    ],
+    [
+      25,
+      49
+    ],
+    [
+      25,
+      114
+    ],
+    [
+      25,
+      55
+    ],
+    [
+      25,
+      121
+    ],
+    [
+      25,
+      123
+    ],
+    [
+      25,
+      62
+    ],
+    [
+      26,
+      34
+    ],
+    [
+      26,
+      67
+    ],
+    [
+      26,
+      38
+    ],
+    [
+      26,
+      52
+    ],
+    [
+      26,
+      86
+    ],
+    [
+      26,
+      117
+    ],
+    [
+      26,
+      122
+    ],
+    [
+      26,
+      28
+    ],
+    [
+      26,
+      95
+    ],
+    [
+      27,
+      32
+    ],
+    [
+      27,
+      37
+    ],
+    [
+      27,
+      103
+    ],
+    [
+      27,
+      72
+    ],
+    [
+      27,
+      45
+    ],
+    [
+      27,
+      111
+    ],
+    [
+      27,
+      49
+    ],
+    [
+      27,
+      89
+    ],
+    [
+      27,
+      91
+    ],
+    [
+      27,
+      92
+    ],
+    [
+      28,
+      96
+    ],
+    [
+      28,
+      67
+    ],
+    [
+      28,
+      42
+    ],
+    [
+      28,
+      107
+    ],
+    [
+      28,
+      110
+    ],
+    [
+      28,
+      49
+    ],
+    [
+      28,
+      115
+    ],
+    [
+      28,
+      121
+    ],
+    [
+      29,
+      33
+    ],
+    [
+      29,
+      66
+    ],
+    [
+      29,
+      69
+    ],
+    [
+      29,
+      70
+    ],
+    [
+      29,
+      104
+    ],
+    [
+      29,
+      109
+    ],
+    [
+      29,
+      55
+    ],
+    [
+      29,
+      127
+    ],
+    [
+      30,
+      97
+    ],
+    [
+      30,
+      109
+    ],
+    [
+      30,
+      79
+    ],
+    [
+      30,
+      80
+    ],
+    [
+      30,
+      50
+    ],
+    [
+      30,
+      116
+    ],
+    [
+      30,
+      54
+    ],
+    [
+      30,
+      126
+    ],
+    [
+      31,
+      71
+    ],
+    [
+      31,
+      42
+    ],
+    [
+      31,
+      50
+    ],
+    [
+      31,
+      82
+    ],
+    [
+      31,
+      52
+    ],
+    [
+      31,
+      53
+    ],
+    [
+      31,
+      54
+    ],
+    [
+      31,
+      125
+    ],
+    [
+      32,
+      35
+    ],
+    [
+      32,
+      67
+    ],
+    [
+      32,
+      36
+    ],
+    [
+      32,
+      37
+    ],
+    [
+      32,
+      109
+    ],
+    [
+      32,
+      124
+    ],
+    [
+      32,
+      126
+    ],
+    [
+      33,
+      71
+    ],
+    [
+      33,
+      46
+    ],
+    [
+      33,
+      111
+    ],
+    [
+      33,
+      114
+    ],
+    [
+      33,
+      55
+    ],
+    [
+      33,
+      119
+    ],
+    [
+      33,
+      89
+    ],
+    [
+      33,
+      94
+    ],
+    [
+      34,
+      43
+    ],
+    [
+      34,
+      108
+    ],
+    [
+      34,
+      78
+    ],
+    [
+      34,
+      49
+    ],
+    [
+      34,
+      50
+    ],
+    [
+      34,
+      51
+    ],
+    [
+      34,
+      57
+    ],
+    [
+      35,
+      65
+    ],
+    [
+      35,
+      44
+    ],
+    [
+      35,
+      77
+    ],
+    [
+      35,
+      46
+    ],
+    [
+      35,
+      82
+    ],
+    [
+      35,
+      87
+    ],
+    [
+      35,
+      56
+    ],
+    [
+      35,
+      61
+    ],
+    [
+      36,
+      96
+    ],
+    [
+      36,
+      98
+    ],
+    [
+      36,
+      70
+    ],
+    [
+      36,
+      40
+    ],
+    [
+      36,
+      112
+    ],
+    [
+      36,
+      84
+    ],
+    [
+      36,
+      121
+    ],
+    [
+      36,
+      63
+    ],
+    [
+      37,
+      38
+    ],
+    [
+      37,
+      123
+    ],
+    [
+      37,
+      77
+    ],
+    [
+      37,
+      110
+    ],
+    [
+      37,
+      114
+    ],
+    [
+      37,
+      87
+    ],
+    [
+      38,
+      64
+    ],
+    [
+      38,
+      96
+    ],
+    [
+      38,
+      47
+    ],
+    [
+      38,
+      111
+    ],
+    [
+      38,
+      49
+    ],
+    [
+      38,
+      60
+    ],
+    [
+      38,
+      93
+    ],
+    [
+      38,
+      127
+    ],
+    [
+      39,
+      69
+    ],
+    [
+      39,
+      101
+    ],
+    [
+      39,
+      103
+    ],
+    [
+      39,
+      42
+    ],
+    [
+      39,
+      45
+    ],
+    [
+      39,
+      46
+    ],
+    [
+      39,
+      116
+    ],
+    [
+      39,
+      88
+    ],
+    [
+      39,
+      90
+    ],
+    [
+      39,
+      124
+    ],
+    [
+      40,
+      99
+    ],
+    [
+      40,
+      42
+    ],
+    [
+      40,
+      47
+    ],
+    [
+      40,
+      112
+    ],
+    [
+      40,
+      48
+    ],
+    [
+      40,
+      51
+    ],
+    [
+      40,
+      55
+    ],
+    [
+      40,
+      122
+    ],
+    [
+      41,
+      73
+    ],
+    [
+      41,
+      43
+    ],
+    [
+      41,
+      78
+    ],
+    [
+      41,
+      114
+    ],
+    [
+      41,
+      52
+    ],
+    [
+      41,
+      118
+    ],
+    [
+      41,
+      120
+    ],
+    [
+      41,
+      123
+    ],
+    [
+      41,
+      63
+    ],
+    [
+      42,
+      46
+    ],
+    [
+      42,
+      113
+    ],
+    [
+      42,
+      118
+    ],
+    [
+      43,
+      98
+    ],
+    [
+      43,
+      101
+    ],
+    [
+      43,
+      105
+    ],
+    [
+      43,
+      75
+    ],
+    [
+      43,
+      44
+    ],
+    [
+      44,
+      121
+    ],
+    [
+      44,
+      45
+    ],
+    [
+      44,
+      109
+    ],
+    [
+      44,
+      47
+    ],
+    [
+      44,
+      49
+    ],
+    [
+      44,
+      89
+    ],
+    [
+      44,
+      90
+    ],
+    [
+      45,
+      76
+    ],
+    [
+      45,
+      115
+    ],
+    [
+      45,
+      88
+    ],
+    [
+      45,
+      92
+    ],
+    [
+      46,
+      91
+    ],
+    [
+      46,
+      108
+    ],
+    [
+      46,
+      86
+    ],
+    [
+      46,
+      121
+    ],
+    [
+      46,
+      59
+    ],
+    [
+      47,
+      96
+    ],
+    [
+      47,
+      70
+    ],
+    [
+      47,
+      81
+    ],
+    [
+      47,
+      52
+    ],
+    [
+      47,
+      120
+    ],
+    [
+      47,
+      124
+    ],
+    [
+      48,
+      103
+    ],
+    [
+      48,
+      74
+    ],
+    [
+      48,
+      54
+    ],
+    [
+      48,
+      55
+    ],
+    [
+      48,
+      118
+    ],
+    [
+      48,
+      57
+    ],
+    [
+      48,
+      91
+    ],
+    [
+      48,
+      92
+    ],
+    [
+      49,
+      68
+    ],
+    [
+      49,
+      79
+    ],
+    [
+      49,
+      50
+    ],
+    [
+      49,
+      63
+    ],
+    [
+      50,
+      69
+    ],
+    [
+      50,
+      106
+    ],
+    [
+      50,
+      77
+    ],
+    [
+      50,
+      89
+    ],
+    [
+      50,
+      126
+    ],
+    [
+      51,
+      66
+    ],
+    [
+      51,
+      76
+    ],
+    [
+      51,
+      77
+    ],
+    [
+      51,
+      85
+    ],
+    [
+      51,
+      88
+    ],
+    [
+      51,
+      127
+    ],
+    [
+      52,
+      76
+    ],
+    [
+      52,
+      80
+    ],
+    [
+      52,
+      57
+    ],
+    [
+      52,
+      91
+    ],
+    [
+      52,
+      60
+    ],
+    [
+      53,
+      99
+    ],
+    [
+      53,
+      68
+    ],
+    [
+      53,
+      69
+    ],
+    [
+      53,
+      104
+    ],
+    [
+      53,
+      105
+    ],
+    [
+      53,
+      107
+    ],
+    [
+      53,
+      87
+    ],
+    [
+      53,
+      56
+    ],
+    [
+      53,
+      62
+    ],
+    [
+      54,
+      64
+    ],
+    [
+      54,
+      70
+    ],
+    [
+      54,
+      80
+    ],
+    [
+      54,
+      126
+    ],
+    [
+      54,
+      127
+    ],
+    [
+      55,
+      68
+    ],
+    [
+      55,
+      103
+    ],
+    [
+      55,
+      107
+    ],
+    [
+      55,
+      111
+    ],
+    [
+      56,
+      106
+    ],
+    [
+      56,
+      108
+    ],
+    [
+      56,
+      111
+    ],
+    [
+      56,
+      58
+    ],
+    [
+      56,
+      93
+    ],
+    [
+      56,
+      63
+    ],
+    [
+      57,
+      103
+    ],
+    [
+      57,
+      73
+    ],
+    [
+      57,
+      78
+    ],
+    [
+      57,
+      113
+    ],
+    [
+      57,
+      60
+    ],
+    [
+      58,
+      99
+    ],
+    [
+      58,
+      68
+    ],
+    [
+      58,
+      106
+    ],
+    [
+      58,
+      112
+    ],
+    [
+      58,
+      117
+    ],
+    [
+      58,
+      120
+    ],
+    [
+      59,
+      98
+    ],
+    [
+      59,
+      99
+    ],
+    [
+      59,
+      108
+    ],
+    [
+      59,
+      111
+    ],
+    [
+      59,
+      85
+    ],
+    [
+      59,
+      86
+    ],
+    [
+      59,
+      125
+    ],
+    [
+      59,
+      93
+    ],
+    [
+      60,
+      100
+    ],
+    [
+      60,
+      108
+    ],
+    [
+      60,
+      85
+    ],
+    [
+      60,
+      84
+    ],
+    [
+      61,
+      65
+    ],
+    [
+      61,
+      73
+    ],
+    [
+      61,
+      109
+    ],
+    [
+      61,
+      111
+    ],
+    [
+      61,
+      86
+    ],
+    [
+      61,
+      91
+    ],
+    [
+      61,
+      120
+    ],
+    [
+      61,
+      63
+    ],
+    [
+      62,
+      99
+    ],
+    [
+      62,
+      103
+    ],
+    [
+      62,
+      106
+    ],
+    [
+      62,
+      118
+    ],
+    [
+      63,
+      106
+    ],
+    [
+      63,
+      78
+    ],
+    [
+      63,
+      114
+    ],
+    [
+      63,
+      87
+    ],
+    [
+      63,
+      121
+    ],
+    [
+      64,
+      66
+    ],
+    [
+      64,
+      110
+    ],
+    [
+      64,
+      113
+    ],
+    [
+      64,
+      81
+    ],
+    [
+      64,
+      115
+    ],
+    [
+      64,
+      88
+    ],
+    [
+      64,
+      91
+    ],
+    [
+      65,
+      98
+    ],
+    [
+      65,
+      70
+    ],
+    [
+      65,
+      102
+    ],
+    [
+      65,
+      73
+    ],
+    [
+      65,
+      75
+    ],
+    [
+      65,
+      110
+    ],
+    [
+      65,
+      95
+    ],
+    [
+      66,
+      75
+    ],
+    [
+      66,
+      116
+    ],
+    [
+      66,
+      95
+    ],
+    [
+      67,
+      82
+    ],
+    [
+      67,
+      125
+    ],
+    [
+      67,
+      94
+    ],
+    [
+      68,
+      99
+    ],
+    [
+      68,
+      84
+    ],
+    [
+      68,
+      88
+    ],
+    [
+      68,
+      127
+    ],
+    [
+      69,
+      102
+    ],
+    [
+      69,
+      85
+    ],
+    [
+      69,
+      119
+    ],
+    [
+      69,
+      118
+    ],
+    [
+      69,
+      89
+    ],
+    [
+      70,
+      97
+    ],
+    [
+      70,
+      117
+    ],
+    [
+      70,
+      123
+    ],
+    [
+      71,
+      99
+    ],
+    [
+      71,
+      100
+    ],
+    [
+      71,
+      102
+    ],
+    [
+      71,
+      73
+    ],
+    [
+      71,
+      106
+    ],
+    [
+      71,
+      111
+    ],
+    [
+      71,
+      120
+    ],
+    [
+      71,
+      94
+    ],
+    [
+      72,
+      121
+    ],
+    [
+      72,
+      75
+    ],
+    [
+      72,
+      82
+    ],
+    [
+      72,
+      115
+    ],
+    [
+      72,
+      85
+    ],
+    [
+      72,
+      119
+    ],
+    [
+      72,
+      89
+    ],
+    [
+      73,
+      100
+    ],
+    [
+      73,
+      120
+    ],
+    [
+      73,
+      122
+    ],
+    [
+      73,
+      95
+    ],
+    [
+      74,
+      105
+    ],
+    [
+      74,
+      109
+    ],
+    [
+      74,
+      116
+    ],
+    [
+      74,
+      119
+    ],
+    [
+      74,
+      120
+    ],
+    [
+      74,
+      89
+    ],
+    [
+      75,
+      125
+    ],
+    [
+      75,
+      93
+    ],
+    [
+      75,
+      127
+    ],
+    [
+      76,
+      100
+    ],
+    [
+      76,
+      78
+    ],
+    [
+      76,
+      114
+    ],
+    [
+      76,
+      84
+    ],
+    [
+      76,
+      122
+    ],
+    [
+      76,
+      127
+    ],
+    [
+      77,
+      108
+    ],
+    [
+      77,
+      90
+    ],
+    [
+      77,
+      91
+    ],
+    [
+      77,
+      94
+    ],
+    [
+      78,
+      97
+    ],
+    [
+      79,
+      97
+    ],
+    [
+      79,
+      119
+    ],
+    [
+      79,
+      125
+    ],
+    [
+      80,
+      98
+    ],
+    [
+      80,
+      110
+    ],
+    [
+      80,
+      113
+    ],
+    [
+      80,
+      126
+    ],
+    [
+      81,
+      105
+    ],
+    [
+      81,
+      107
+    ],
+    [
+      81,
+      111
+    ],
+    [
+      81,
+      116
+    ],
+    [
+      81,
+      88
+    ],
+    [
+      81,
+      125
+    ],
+    [
+      82,
+      115
+    ],
+    [
+      82,
+      89
+    ],
+    [
+      82,
+      90
+    ],
+    [
+      83,
+      98
+    ],
+    [
+      83,
+      100
+    ],
+    [
+      83,
+      106
+    ],
+    [
+      83,
+      110
+    ],
+    [
+      83,
+      113
+    ],
+    [
+      83,
+      118
+    ],
+    [
+      84,
+      121
+    ],
+    [
+      84,
+      95
+    ],
+    [
+      85,
+      99
+    ],
+    [
+      85,
+      102
+    ],
+    [
+      85,
+      91
+    ],
+    [
+      86,
+      104
+    ],
+    [
+      86,
+      109
+    ],
+    [
+      86,
+      119
+    ],
+    [
+      86,
+      87
+    ],
+    [
+      86,
+      92
+    ],
+    [
+      87,
+      96
+    ],
+    [
+      87,
+      92
+    ],
+    [
+      87,
+      126
+    ],
+    [
+      88,
+      102
+    ],
+    [
+      88,
+      112
+    ],
+    [
+      88,
+      117
+    ],
+    [
+      89,
+      96
+    ],
+    [
+      90,
+      116
+    ],
+    [
+      90,
+      124
+    ],
+    [
+      91,
+      110
+    ],
+    [
+      91,
+      114
+    ],
+    [
+      93,
+      101
+    ],
+    [
+      93,
+      109
+    ],
+    [
+      94,
+      107
+    ],
+    [
+      94,
+      117
+    ],
+    [
+      94,
+      120
+    ],
+    [
+      94,
+      122
+    ],
+    [
+      95,
+      97
+    ],
+    [
+      95,
+      122
+    ],
+    [
+      95,
+      116
+    ],
+    [
+      96,
+      118
+    ],
+    [
+      97,
+      105
+    ],
+    [
+      97,
+      122
+    ],
+    [
+      97,
+      125
+    ],
+    [
+      98,
+      103
+    ],
+    [
+      99,
+      108
+    ],
+    [
+      100,
+      111
+    ],
+    [
+      100,
+      115
+    ],
+    [
+      101,
+      105
+    ],
+    [
+      101,
+      112
+    ],
+    [
+      102,
+      106
+    ],
+    [
+      102,
+      114
+    ],
+    [
+      103,
+      104
+    ],
+    [
+      104,
+      112
+    ],
+    [
+      104,
+      123
+    ],
+    [
+      105,
+      116
+    ],
+    [
+      106,
+      126
+    ],
+    [
+      107,
+      115
+    ],
+    [
+      110,
+      127
+    ],
+    [
+      113,
+      125
+    ],
+    [
+      115,
+      124
+    ],
+    [
+      117,
+      121
+    ],
+    [
+      123,
+      124
+    ],
+    [
+      126,
+      127
+    ]
+  ]
+}

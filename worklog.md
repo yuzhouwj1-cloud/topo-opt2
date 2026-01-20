@@ -2984,3 +2984,23 @@ the routing strategy used, and the outputs needed to reproduce results.
   ]
 ]
 ```
+
+## Async optimization updates
+
+- Date: 2026-01-20 19:10
+- Added async timing with time-evolving link loads and async_optimized routing
+  (relay + multipath + async-aware seed loads).
+- Async comparisons use identical Poisson start times across direct/switch
+  (`ASYNC_START_LAMBDA=1.0`, seed=42).
+
+### k11 async checks (MoE, seed=42)
+- A0-only request (`async_optimized`): mean `1.716957`, variance `0.0`.
+- 64 requests (`async_optimized`): mean `3.978752`, variance `0.431603`.
+- 64 requests (`adaptive_selective_relay_b`): mean `3.890061`,
+  variance `0.443508`.
+- Switch async baseline (ports=4): mean `3.097476`, variance `0.741405`.
+
+### k10 async optimization (MoE, seed=42)
+- Setup: `ports_per_chip=10`, `async_optimized`, 5×100-iteration chunks.
+- Best mean after 500 iterations: `3.933892` (still worse than switch).
+- Output: `optimization_result_k10_async.json`.
