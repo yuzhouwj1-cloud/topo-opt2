@@ -31,7 +31,11 @@ from topo_config import (
     TRAFFIC_MODE,
     TRAFFIC_SEED,
 )
-from topology import build_initial_topology
+from topology import (
+    build_clos_topology,
+    build_dragonfly_topology,
+    build_initial_topology,
+)
 from traffic import generate_traffic, serialize_traffic, traffic_matrix
 from traffic_heatmap import plot_traffic_heatmap
 from visualize_history import plot_history
@@ -307,6 +311,38 @@ def handle_compare_switch(args: argparse.Namespace) -> None:
     print(json.dumps(payload, indent=2))
 
 
+def handle_generate_topology(args: argparse.Namespace) -> None:
+    dragonfly = build_dragonfly_topology(
+        groups=args.dragonfly_groups,
+        routers_per_group=args.dragonfly_routers_per_group,
+        global_links_per_router=args.dragonfly_global_links,
+    )
+    clos = build_clos_topology(
+        pods=args.clos_pods,
+        edge_per_pod=args.clos_edge_per_pod,
+        agg_per_pod=args.clos_agg_per_pod,
+        core_switches=args.clos_core_switches,
+        ports_per_switch=args.ports_per_switch,
+    )
+
+    dragonfly_nodes = len(dragonfly.nodes())
+    clos_nodes = len(clos.nodes())
+    if dragonfly_nodes != clos_nodes:
+        raise ValueError(
+            "dragonfly nodes (%d) != clos nodes (%d)" % (dragonfly_nodes, clos_nodes)
+        )
+
+    max_df_degree = max((dragonfly.degree(n) for n in dragonfly.nodes()), default=0)
+    max_clos_degree = max((clos.degree(n) for n in clos.nodes()), default=0)
+    if max_df_degree > args.ports_per_switch:
+        raise ValueError("dragonfly degree exceeds ports_per_switch")
+    if max_clos_degree > args.ports_per_switch:
+        raise ValueError("clos degree exceeds ports_per_switch")
+
+    export_topology(dragonfly, args.dragonfly_output)
+    export_topology(clos, args.clos_output)
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Topology optimization toolkit")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -456,6 +492,22 @@ def build_parser() -> argparse.ArgumentParser:
         default=TIMING_MODEL,
     )
     compare_parser.set_defaults(func=handle_compare_switch)
+
+    topology_parser = subparsers.add_parser(
+        "generate-topology",
+        help="Generate dragonfly and Clos topologies with matching node counts.",
+    )
+    topology_parser.add_argument("--dragonfly-output", required=True)
+    topology_parser.add_argument("--clos-output", required=True)
+    topology_parser.add_argument("--ports-per-switch", type=int, default=PORTS_PER_CHIP)
+    topology_parser.add_argument("--dragonfly-groups", type=int, required=True)
+    topology_parser.add_argument("--dragonfly-routers-per-group", type=int, required=True)
+    topology_parser.add_argument("--dragonfly-global-links", type=int, required=True)
+    topology_parser.add_argument("--clos-pods", type=int, required=True)
+    topology_parser.add_argument("--clos-edge-per-pod", type=int, required=True)
+    topology_parser.add_argument("--clos-agg-per-pod", type=int, required=True)
+    topology_parser.add_argument("--clos-core-switches", type=int, required=True)
+    topology_parser.set_defaults(func=handle_generate_topology)
 
     return parser
 

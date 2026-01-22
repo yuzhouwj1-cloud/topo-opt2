@@ -77,6 +77,21 @@ Compare with switch baseline:
 python cli.py compare-switch --iterations 500 --seed 42
 ```
 
+Generate dragonfly and Clos topologies (matching node counts):
+```bash
+python cli.py generate-topology \
+  --dragonfly-output dragonfly.json \
+  --clos-output clos.json \
+  --ports-per-switch 12 \
+  --dragonfly-groups 8 \
+  --dragonfly-routers-per-group 16 \
+  --dragonfly-global-links 4 \
+  --clos-pods 8 \
+  --clos-edge-per-pod 8 \
+  --clos-agg-per-pod 8 \
+  --clos-core-switches 32
+```
+
 ## Output fields (optimize)
 
 The `optimize` command prints a JSON payload containing:

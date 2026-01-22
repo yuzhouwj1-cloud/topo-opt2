@@ -3004,3 +3004,11 @@ the routing strategy used, and the outputs needed to reproduce results.
 - Setup: `ports_per_chip=10`, `async_optimized`, 5×100-iteration chunks.
 - Best mean after 500 iterations: `3.933892` (still worse than switch).
 - Output: `optimization_result_k10_async.json`.
+
+## Structured topology generation
+
+- Date: 2026-01-21 23:11
+- Added dragonfly and Clos topology generators with a CLI command
+  (`generate-topology`) to export matching-node-count topologies.
+- Dragonfly: groups, routers per group, global links per router.
+- Clos: pods, edge/agg per pod, core switches; validates per-switch degree.
