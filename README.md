@@ -92,6 +92,27 @@ python cli.py generate-topology \
   --clos-core-switches 32
 ```
 
+Generate dragonfly-b and Clos topologies (matching node counts):
+```bash
+python cli.py generate-topology \
+  --dragonfly-variant b \
+  --dragonfly-output dragonfly_b.json \
+  --clos-output clos.json \
+  --ports-per-switch 64 \
+  --dragonfly-groups 8 \
+  --dragonfly-routers-per-group 8 \
+  --dragonfly-router-ports 16 \
+  --dragonfly-local-ports 8 \
+  --dragonfly-switch-ports 64 \
+  --clos-pods 8 \
+  --clos-edge-per-pod 4 \
+  --clos-agg-per-pod 4 \
+  --clos-core-switches 8
+```
+Note: dragonfly-b collapses local router-to-switch bundles into one logical link per
+router for topology export; port counts are used for validation and global link
+assignment.
+
 ## Output fields (optimize)
 
 The `optimize` command prints a JSON payload containing:

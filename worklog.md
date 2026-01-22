@@ -3012,3 +3012,13 @@ the routing strategy used, and the outputs needed to reproduce results.
   (`generate-topology`) to export matching-node-count topologies.
 - Dragonfly: groups, routers per group, global links per router.
 - Clos: pods, edge/agg per pod, core switches; validates per-switch degree.
+
+## Dragonfly-b topology variant
+
+- Date: 2026-01-22 00:18
+- Added dragonfly-b generator with per-group switch nodes and global full-mesh
+  links allocated across router global ports.
+- CLI `generate-topology` supports `--dragonfly-variant b` with router/local/switch
+  port parameters and validates switch port parity with Clos.
+- Local router-to-switch bundles are modeled as one logical link per router in the
+  exported topology (port counts used for validation/global link allocation).
