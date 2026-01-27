@@ -219,3 +219,179 @@ def random_swap_edges(
     topology.add_edge(a_src, b_dst)
     topology.add_edge(b_src, a_dst)
     return topology
+
+
+def build_dragonfly_topology(
+    groups: int,
+    routers_per_group: int,
+    global_links_per_router: int,
+) -> Topology:
+    """Build a simplified dragonfly topology (switch-only, no terminals)."""
+    if groups <= 0:
+        raise ValueError("groups must be positive")
+    if routers_per_group <= 0:
+        raise ValueError("routers_per_group must be positive")
+    if global_links_per_router < 0:
+        raise ValueError("global_links_per_router must be non-negative")
+    if groups == 1 and global_links_per_router > 0:
+        raise ValueError("global_links_per_router must be 0 when groups=1")
+    if groups > 1 and global_links_per_router > groups - 1:
+        raise ValueError("global_links_per_router exceeds groups-1")
+
+    topology = Topology()
+    total_nodes = groups * routers_per_group
+    for node in range(total_nodes):
+        topology.adjacency.setdefault(node, set())
+
+    for group in range(groups):
+        start = group * routers_per_group
+        for i in range(routers_per_group):
+            node_i = start + i
+            for j in range(i + 1, routers_per_group):
+                node_j = start + j
+                topology.add_edge(node_i, node_j)
+
+    for group in range(groups):
+        candidates = [g for g in range(groups) if g != group]
+        for router in range(routers_per_group):
+            if not candidates:
+                continue
+            start_idx = (router * global_links_per_router) % len(candidates)
+            for offset in range(global_links_per_router):
+                target_group = candidates[(start_idx + offset) % len(candidates)]
+                src = group * routers_per_group + router
+                dst = target_group * routers_per_group + router
+                topology.add_edge(src, dst)
+
+    return topology
+
+
+def build_clos_topology(
+    pods: int,
+    edge_per_pod: int,
+    agg_per_pod: int,
+    core_switches: int,
+    ports_per_switch: int,
+) -> Topology:
+    """Build a 3-stage Clos topology (switch-only, no terminals)."""
+    if pods <= 0:
+        raise ValueError("pods must be positive")
+    if edge_per_pod <= 0:
+        raise ValueError("edge_per_pod must be positive")
+    if agg_per_pod <= 0:
+        raise ValueError("agg_per_pod must be positive")
+    if core_switches <= 0:
+        raise ValueError("core_switches must be positive")
+    if ports_per_switch <= 0:
+        raise ValueError("ports_per_switch must be positive")
+    if agg_per_pod > ports_per_switch:
+        raise ValueError("agg_per_pod exceeds ports_per_switch")
+    if edge_per_pod > ports_per_switch:
+        raise ValueError("edge_per_pod exceeds ports_per_switch")
+
+    uplinks = ports_per_switch - edge_per_pod
+    total_edges = pods * edge_per_pod
+    total_aggs = pods * agg_per_pod
+    total_nodes = total_edges + total_aggs + core_switches
+    topology = Topology()
+    for node in range(total_nodes):
+        topology.adjacency.setdefault(node, set())
+
+    edge_offset = 0
+    agg_offset = total_edges
+    core_offset = total_edges + total_aggs
+
+    for pod in range(pods):
+        edge_nodes = [
+            edge_offset + pod * edge_per_pod + idx for idx in range(edge_per_pod)
+        ]
+        agg_nodes = [
+            agg_offset + pod * agg_per_pod + idx for idx in range(agg_per_pod)
+        ]
+        for edge in edge_nodes:
+            for agg in agg_nodes:
+                topology.add_edge(edge, agg)
+
+        for agg_idx, agg in enumerate(agg_nodes):
+            link_count = min(core_switches, uplinks)
+            for link in range(link_count):
+                core = core_offset + ((agg_idx * link_count + link) % core_switches)
+                topology.add_edge(agg, core)
+
+    max_degree = max((topology.degree(node) for node in range(total_nodes)), default=0)
+    if max_degree > ports_per_switch:
+        raise ValueError("clos topology exceeds ports_per_switch degree constraint")
+
+    return topology
+
+
+def build_dragonfly_b_topology(
+    groups: int,
+    routers_per_group: int,
+    router_ports: int,
+    local_ports_per_router: int,
+    switch_ports: int,
+) -> Topology:
+    """Build a dragonfly-b topology with a per-group switch node."""
+    if groups <= 0:
+        raise ValueError("groups must be positive")
+    if routers_per_group <= 0:
+        raise ValueError("routers_per_group must be positive")
+    if router_ports <= 0:
+        raise ValueError("router_ports must be positive")
+    if local_ports_per_router <= 0:
+        raise ValueError("local_ports_per_router must be positive")
+    if switch_ports <= 0:
+        raise ValueError("switch_ports must be positive")
+    if local_ports_per_router > router_ports:
+        raise ValueError("local_ports_per_router exceeds router_ports")
+    if routers_per_group * local_ports_per_router != switch_ports:
+        raise ValueError("switch_ports must equal routers_per_group * local_ports_per_router")
+
+    global_ports_per_router = router_ports - local_ports_per_router
+    if global_ports_per_router < 0:
+        raise ValueError("global_ports_per_router must be non-negative")
+    if groups > 1 and global_ports_per_router == 0:
+        raise ValueError("global_ports_per_router must be positive when groups>1")
+    if groups > 1 and routers_per_group * global_ports_per_router < groups - 1:
+        raise ValueError("insufficient global ports per group for full connectivity")
+
+    routers_total = groups * routers_per_group
+    switch_offset = routers_total
+    total_nodes = routers_total + groups
+    topology = Topology()
+    for node in range(total_nodes):
+        topology.adjacency.setdefault(node, set())
+
+    for group in range(groups):
+        switch_node = switch_offset + group
+        start = group * routers_per_group
+        for idx in range(routers_per_group):
+            router = start + idx
+            topology.add_edge(router, switch_node)
+
+    if groups == 1:
+        return topology
+
+    remaining = {router: global_ports_per_router for router in range(routers_total)}
+    next_idx = {group: 0 for group in range(groups)}
+
+    def pick_router(group: int) -> int:
+        start = next_idx[group]
+        base = group * routers_per_group
+        for offset in range(routers_per_group):
+            idx = (start + offset) % routers_per_group
+            router = base + idx
+            if remaining[router] > 0:
+                remaining[router] -= 1
+                next_idx[group] = (idx + 1) % routers_per_group
+                return router
+        raise ValueError("insufficient global ports to connect all groups")
+
+    for group_a in range(groups):
+        for group_b in range(group_a + 1, groups):
+            src = pick_router(group_a)
+            dst = pick_router(group_b)
+            topology.add_edge(src, dst)
+
+    return topology

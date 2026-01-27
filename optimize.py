@@ -6,7 +6,7 @@ from dataclasses import dataclass
 import json
 import os
 import random
-from typing import List, Optional
+from typing import Dict, List, Optional
 
 from simulate import SimulationResult, simulate
 from topo_config import (
@@ -16,13 +16,19 @@ from topo_config import (
     EARLY_STOP_PATIENCE,
     INITIAL_TEMPERATURE,
     MIN_ITERATIONS,
+    MOE_R,
     N,
+    PORTS_PER_CHIP,
     REWIRE_EDGES,
     RESUME_STATE_PATH,
     SEARCH_STRATEGY,
     STAGNATION_LIMIT,
     SWAP_EDGES,
     CANDIDATE_POOL,
+    ROUTING_STRATEGY,
+    TIMING_MODEL,
+    TRAFFIC_MODE,
+    TRAFFIC_SEED,
 )
 from topology import (
     Topology,
@@ -31,7 +37,7 @@ from topology import (
     random_swap_edges,
     topology_from_edges,
 )
-from traffic import TrafficDemand, generate_full_mesh_traffic
+from traffic import TrafficDemand, generate_traffic
 
 
 @dataclass
@@ -45,11 +51,24 @@ def optimize_topology(
     iterations: int = 200,
     seed: int = DEFAULT_RANDOM_SEED,
     resume_path: Optional[str] = RESUME_STATE_PATH,
+    traffic_mode: str = TRAFFIC_MODE,
+    moe_r: int = MOE_R,
+    traffic_seed: int = TRAFFIC_SEED,
+    routing_strategy: str = ROUTING_STRATEGY,
+    ports_per_chip: int = PORTS_PER_CHIP,
+    timing_model: str = TIMING_MODEL,
+    start_times: Optional[Dict[int, int]] = None,
 ) -> OptimizationResult:
     rng = random.Random(seed)
-    traffic = generate_full_mesh_traffic()
-    current_topology = build_initial_topology(seed=seed)
-    current_result = simulate(current_topology, traffic)
+    traffic = generate_traffic(mode=traffic_mode, moe_r=moe_r, seed=traffic_seed)
+    current_topology = build_initial_topology(seed=seed, ports_per_chip=ports_per_chip)
+    current_result = simulate(
+        current_topology,
+        traffic,
+        routing_strategy=routing_strategy,
+        timing_model=timing_model,
+        start_times=start_times,
+    )
 
     if resume_path and os.path.exists(resume_path):
         with open(resume_path, "r", encoding="utf-8") as handle:
@@ -57,7 +76,13 @@ def optimize_topology(
         edges = payload.get("edges", [])
         if edges:
             current_topology = topology_from_edges(edges, N)
-            current_result = simulate(current_topology, traffic)
+            current_result = simulate(
+            current_topology,
+            traffic,
+            routing_strategy=routing_strategy,
+            timing_model=timing_model,
+            start_times=start_times,
+        )
 
     best_topology = current_topology
     best_result = current_result
@@ -87,13 +112,20 @@ def optimize_topology(
                 proposal = random_rewire(
                     proposal,
                     seed=rng.randint(0, 10**9),
+                    ports_per_chip=ports_per_chip,
                 )
             for _ in range(max(0, SWAP_EDGES)):
                 proposal = random_swap_edges(
                     proposal,
                     seed=rng.randint(0, 10**9),
                 )
-            proposal_result = simulate(proposal, traffic)
+            proposal_result = simulate(
+                proposal,
+                traffic,
+                routing_strategy=routing_strategy,
+                timing_model=timing_model,
+                start_times=start_times,
+            )
             history.append(proposal_result)
             proposal_score = score(proposal_result)
             if candidate_score is None or proposal_score < candidate_score:
@@ -128,8 +160,17 @@ def optimize_topology(
                 current_score = candidate_score
 
         if stagnation >= STAGNATION_LIMIT:
-            current_topology = build_initial_topology(seed=rng.randint(0, 10**9))
-            current_result = simulate(current_topology, traffic)
+            current_topology = build_initial_topology(
+                seed=rng.randint(0, 10**9),
+                ports_per_chip=ports_per_chip,
+            )
+            current_result = simulate(
+                current_topology,
+                traffic,
+                routing_strategy=routing_strategy,
+                timing_model=timing_model,
+                start_times=start_times,
+            )
             current_score = score(current_result)
             temperature = INITIAL_TEMPERATURE
             stagnation = 0
@@ -158,12 +199,16 @@ def save_optimization(result: OptimizationResult, path: str) -> None:
             "communication_time": result.best_result.communication_time,
             "max_edge_load": result.best_result.max_edge_load,
             "disconnected_flows": result.best_result.disconnected_flows,
+            "request_time_mean": result.best_result.request_time_mean,
+            "request_time_variance": result.best_result.request_time_variance,
         },
         "history": [
             {
                 "communication_time": item.communication_time,
                 "max_edge_load": item.max_edge_load,
                 "disconnected_flows": item.disconnected_flows,
+                "request_time_mean": item.request_time_mean,
+                "request_time_variance": item.request_time_variance,
             }
             for item in result.history
         ],

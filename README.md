@@ -7,10 +7,14 @@ for a fixed a→b traffic pattern (all sources in group A sending to all destina
 
 * **`traffic.py`** builds the a→b traffic matrix and demand list.
 * **`topology.py`** represents the topology graph and implements rewiring moves.
-* **`simulate.py`** routes traffic (with multipath strategies) and estimates communication time.
+* **`simulate.py`** routes traffic (with multipath strategies) and estimates communication time;
+  relay selection only matters when a source has multiple targets (e.g., MoE traffic).
+  It also supports async timing (Poisson start times) with time-evolving link loads and
+  reports mean/variance of per-request completion times.
 * **`optimize.py`** searches for better topologies using simulated annealing + rewires/swaps,
   with optional resume and early stopping.
-* **`baseline.py`** computes the equivalent switch baseline for comparison.
+* **`baseline.py`** computes the equivalent switch baseline for comparison; for MoE
+  traffic it assumes each source sends one shared payload (multicast at the switch).
 * **`visualize_history.py`** plots the iteration vs communication-time curve (if matplotlib exists).
 * **`visualize_topology.py`** draws the topology graph (if matplotlib + networkx exist).
 * **`export_drawio_svg.py`** exports draw.io and SVG diagrams for the optimized topology.
@@ -48,6 +52,16 @@ Simulate the initial topology:
 python cli.py simulate --seed 42
 ```
 
+Simulate with async timing:
+```bash
+python cli.py simulate --seed 42 --timing-model async
+```
+
+Async-optimized routing (relay + multipath, async-aware):
+```bash
+python cli.py simulate --seed 42 --timing-model async --routing-strategy async_optimized
+```
+
 Export the initial topology to JSON:
 ```bash
 python cli.py export --seed 42 --output topology.json
@@ -62,6 +76,42 @@ Compare with switch baseline:
 ```bash
 python cli.py compare-switch --iterations 500 --seed 42
 ```
+
+Generate dragonfly and Clos topologies (matching node counts):
+```bash
+python cli.py generate-topology \
+  --dragonfly-output dragonfly.json \
+  --clos-output clos.json \
+  --ports-per-switch 12 \
+  --dragonfly-groups 8 \
+  --dragonfly-routers-per-group 16 \
+  --dragonfly-global-links 4 \
+  --clos-pods 8 \
+  --clos-edge-per-pod 8 \
+  --clos-agg-per-pod 8 \
+  --clos-core-switches 32
+```
+
+Generate dragonfly-b and Clos topologies (matching node counts):
+```bash
+python cli.py generate-topology \
+  --dragonfly-variant b \
+  --dragonfly-output dragonfly_b.json \
+  --clos-output clos.json \
+  --ports-per-switch 64 \
+  --dragonfly-groups 8 \
+  --dragonfly-routers-per-group 8 \
+  --dragonfly-router-ports 16 \
+  --dragonfly-local-ports 8 \
+  --dragonfly-switch-ports 64 \
+  --clos-pods 8 \
+  --clos-edge-per-pod 4 \
+  --clos-agg-per-pod 4 \
+  --clos-core-switches 8
+```
+Note: dragonfly-b collapses local router-to-switch bundles into one logical link per
+router for topology export; port counts are used for validation and global link
+assignment.
 
 ## Output fields (optimize)
 
